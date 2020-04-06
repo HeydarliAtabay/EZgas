@@ -42,7 +42,9 @@ Version:
 
 ## Interfaces
 \<describe here each interface in the context diagram>
+
 \<GUIs will be described graphically in a separate document>
+
 | Actor | Logical Interface | Physical Interface  |
 | ------------- |:-------------:| -----:|
 |       |  |  |
@@ -50,14 +52,18 @@ Version:
 # Stories and personas
 \<A Persona is a realistic impersonation of an actor. Define here a few personas and describe in plain text how a persona interacts with the system>
 
-\<Persona is-an-instance-of actor>  \<stories will be formalized later as use cases>
+\<Persona is-an-instance-of actor>
+
+\<stories will be formalized later as use cases>
 
 
 # Functional and non functional requirements
 
 ## Functional Requirements
 
-\<In the form DO SOMETHING, or VERB NOUN, describe high level capabilities of the system> <will match to high level use cases>
+\<In the form DO SOMETHING, or VERB NOUN, describe high level capabilities of the system>
+
+\<will match to high level use cases>
 
 | ID        | Description  |
 | ------------- |:-------------:| 
@@ -93,13 +99,17 @@ Version:
 
 ##### Scenario 1.1 
 
-\<describe here scenarios instances of UC1 > 
+\<describe here scenarios instances of UC1>
+
 \<a scenario is a sequence of steps that corresponds to a particular execution of one use case>
+
 \<a scenario is a more formal description of a story>
+
 \<only relevant scenarios should be described>
-|Scenario 1.1 | |
+
+| Scenario 1.1 | |
 | ------------- |:-------------:| 
-|  Precondition     | \<Boolean expression, must evaluate to true before the scenario can start>|
+|  Precondition     | \<Boolean expression, must evaluate to true before the scenario can start> |
 |  Post condition     | \<Boolean expression, must evaluate to true after scenario is finished> |
 | Step#        | Description  |
 |  1     |  |  
@@ -110,17 +120,23 @@ Version:
 
 ### Use case 2, UC2
 ..
-### Use case \<n>
+
+### Use case
 ..
 
 
 
 # Glossary
 
-\<use UML class diagram to define important concepts in the domain of the system, and their relationships>  <concepts are used consistently all over the document, ex in use cases, requirements etc>
+\<use UML class diagram to define important concepts in the domain of the system, and their relationships> 
+
+\<concepts are used consistently all over the document, ex in use cases, requirements etc>
 
 # System Design
-\<describe here system design> <must be consistent with Context diagram>
+\<describe here system design>
+
+\<must be consistent with Context diagram>
 
 # Deployment Diagram 
+
 \<describe here deployment diagram >
