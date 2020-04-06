@@ -1,4 +1,4 @@
-# Requirements Document Template
+# Requirements Document 
 
 Authors:
 
@@ -20,9 +20,11 @@ Version:
 - [Use case diagram and use cases](#use-case-diagram-and-use-cases)
 	+ [Use case diagram](#use-case-diagram)
 	+ [Use cases](#use-cases)
-	+ [Relevant scenarios](#relevant-scenarios)
+    	+ [Relevant scenarios](#relevant-scenarios)
 - [Glossary](#glossary)
 - [System design](#system-design)
+- [Deployment diagram](#deployment-diagram)
+
 
 # Stakeholders
 
@@ -39,6 +41,8 @@ Version:
 \<actors are a subset of stakeholders>
 
 ## Interfaces
+\<describe here each interface in the context diagram>
+\<GUIs will be described graphically in a separate document>
 | Actor | Logical Interface | Physical Interface  |
 | ------------- |:-------------:| -----:|
 |       |  |  |
@@ -57,9 +61,8 @@ Version:
 
 | ID        | Description  |
 | ------------- |:-------------:| 
-|  FR1     |  |  
-|  FR2     |  |
-|  ...     |  |
+|  FR1     |  |
+|  FR2     |   |
 
 ## Non Functional Requirements
 
@@ -67,9 +70,9 @@ Version:
 
 | ID        | Type (efficiency, reliability, ..)           | Description  | Refers to |
 | ------------- |:-------------:| :-----:| -----:|
-|  NFR1     |  |  | FR\<x>|
-|  NFR2     |  |  | FR\<y>|
-|  ...     |  |  | FR\<x>|
+|  NFR1     |   |  | |
+|  NFR2     | |  | |
+|  NFR3     | | | |
 
 
 # Use case diagram and use cases
@@ -78,9 +81,8 @@ Version:
 ## Use case diagram
 \<define here UML Use case diagram UCD summarizing all use cases, and their relationships>
 
-## Use Cases
-\<describe here each use case in the UCD>
 
+\<next describe here each use case in the UCD>
 ### Use case 1, UC1
 | Actors Involved        |  |
 | ------------- |:-------------:| 
@@ -89,29 +91,29 @@ Version:
 |  Nominal Scenario     | \<Textual description of actions executed by the UC> |
 |  Variants     | \<other executions, ex in case of errors> |
 
-### Use case 2, UC2
+##### Scenario 1.1 
 
-### Use case \<n>
-
-
-# Relevant scenarios
-State at which UC the scenario refers to
+\<describe here scenarios instances of UC1 > 
 \<a scenario is a sequence of steps that corresponds to a particular execution of one use case>
-\<a scenario is more formal description of a story>
+\<a scenario is a more formal description of a story>
 \<only relevant scenarios should be described>
-
-## Scenario 1
-
-| Scenario ID: SC1        | Corresponds to UC:  |
+|Scenario 1.1 | |
 | ------------- |:-------------:| 
+|  Precondition     | \<Boolean expression, must evaluate to true before the scenario can start>|
+|  Post condition     | \<Boolean expression, must evaluate to true after scenario is finished> |
 | Step#        | Description  |
 |  1     |  |  
 |  2     |  |
 |  ...     |  |
 
-## Scenario 2
+##### Scenario 1.2
 
-...
+### Use case 2, UC2
+..
+### Use case \<n>
+..
+
+
 
 # Glossary
 
@@ -119,3 +121,6 @@ State at which UC the scenario refers to
 
 # System Design
 \<describe here system design> <must be consistent with Context diagram>
+
+# Deployment Diagram 
+\<describe here deployment diagram >
