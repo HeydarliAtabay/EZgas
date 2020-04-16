@@ -51,7 +51,7 @@ m -- (EZGas)
 gso -- (EZGas)
 @enduml
 ```
-![alt text](https://i.imgur.com/HN4azAw.png "context diagram")
+
 
 
 ## Interfaces
