@@ -116,29 +116,29 @@ actor Gas_station_owner as gso
 
 
 rectangle EZGas {
-	("Manage user account: FR1, FR12, FR6") as uacc
+	(Manage user account: FR1, FR12, FR6) as uacc
 	u -- uacc
 	gso -- uacc
 
-	("Display map: FR2") as fr2
+	(Display map: FR2) as fr2
 	m -- fr2
 	u -- fr2
 
-	("Show list of stations: FR3, FR4, FR5") as list
+	(Show list of stations: FR3, FR4, FR5) as list
 	u -- list
 
-	("Update prices: FR7, FR11") as pr
+	(Update prices: FR7, FR11) as pr
 	u -- pr
 	gso -- pr
 
-	("Add a gas station: FR10") as add
+	(Add a gas station: FR10) as add
 	u -- add
 
-	("User reports: FR8, FR9") as rep
+	(User reports: FR8, FR9) as rep
 	u -- rep
 	gso -- rep
 
-	("Review: FR13") as rev
+	(Review: FR13) as rev
 	u -- rev
 }
 
@@ -165,6 +165,19 @@ rectangle EZGas {
 |  Nominal Scenario     | EZgas gets the location from the GPS, loads the map, overlays the map with the gas stations present, and displays it |
 |  Variants     | Shows error if the GPS is not able to locate the user, or if the map service itself throws an error |
 
+
+##### Scenario 2.1 
+
+| Scenario 2.1 | Corresponds to UC2 |
+| ------------- |:-------------:| 
+|  Precondition     | The GPS is able to locate the user |
+|  Post condition     | A map of the user's location is shown, with the gas stations marked |
+| Step#        | Description  |
+|  1     | Get the location of the user |  
+|  2     | Get the map of that location from the map service  |
+|  3  | Calculate which gas stations are inside the area of the map |
+|  4 | Draw a symbol of each gas station over the map |
+|  5  | Display the map to the user |
 
 
 
@@ -241,6 +254,20 @@ rectangle EZGas {
 |  Nominal Scenario     | The user selects the gas station, inputs the new prices, the system is updated |
 |  Variants     | If the gas station has already been claimed, it tells the user that he can send a report (FR8, FR9) |
 
+
+##### Scenario 10.1 
+
+| Scenario 10.1 | Corresponds to UC10 |
+| ------------- |:-------------:| 
+|  Precondition     | The gas station hasn't been claimed by an owner yet |
+|  Post condition     | The gas station's prices are updated |
+| Step#        | Description  |
+|  1     | User selects which station to update |  
+|  2     | The system verifies that the station has not been claimed |
+|  3     | The user inputs the new prices |
+|  4     | The system updates the station's prices |
+
+
 ### Use case 11, UC11 - FR12:	User should be able to log out
 | Actors Involved        | User |
 | ------------- |:-------------:| 
@@ -256,27 +283,6 @@ rectangle EZGas {
 |  Post condition     | A new review is added to the gas station |
 |  Nominal Scenario     | The user writes a review, and it is added to the station |
 |  Variants     | If the gas station doesn't exist in the system, it shows an error |
-
-
-##### Scenario 1.1 
-
-\<describe here scenarios instances of UC1>
-
-\<a scenario is a sequence of steps that corresponds to a particular execution of one use case>
-
-\<a scenario is a more formal description of a story>
-
-\<only relevant scenarios should be described>
-
-| Scenario 1.1 | |
-| ------------- |:-------------:| 
-|  Precondition     | \<Boolean expression, must evaluate to true before the scenario can start> |
-|  Post condition     | \<Boolean expression, must evaluate to true after scenario is finished> |
-| Step#        | Description  |
-|  1     |  |  
-|  2     |  |
-|  ...     |  |
-
 
 
 
