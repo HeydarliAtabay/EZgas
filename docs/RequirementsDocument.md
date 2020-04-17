@@ -92,6 +92,7 @@ Barney is planning a long roadtrip. By using EZGas, he is able to see in advance
 | FR10 | User can add a gas station to the system |
 | FR11 | User can modify the prices of a gas station, if that gas station has not yet been claimed |
 | FR12 | User should be able to log out |
+| FR13 | User can write a review of a gas station |
 
 ## Non Functional Requirements
 
@@ -160,14 +161,64 @@ Barney is planning a long roadtrip. By using EZGas, he is able to see in advance
 
 
 
-### Use case 1, UC1 - FR1:	Log in
-| Actors Involved        |  |
+### Use case 6, UC6 - FR6:	User should be able to sign up as a gas station owner
+| Actors Involved        | User, Gas station owner |
 | ------------- |:-------------:| 
-|  Precondition     | \<Boolean expression, must evaluate to true before the UC can start> |  
-|  Post condition     | \<Boolean expression, must evaluate to true after UC is finished> |
-|  Nominal Scenario     | \<Textual description of actions executed by the UC> |
-|  Variants     | \<other executions, ex in case of errors> |
+|  Precondition     | User is not already a gas station owner |  
+|  Post condition     | User is a gas station owner |
+|  Nominal Scenario     | User inputs the data about the gas station he owns, EZGas registers him as a gas station owner |
+|  Variants     | If the user is already a gas station owner, displays an error |
 
+
+### Use case 7, UC7 - FR7:	Gas station owner can update the prices of his station
+| Actors Involved        | Gas station owner |
+| ------------- |:-------------:| 
+|  Precondition     | The gas station is registered as owned by the gas station owner |  
+|  Post condition     | The gas station's prices are updated |
+|  Nominal Scenario     | Gas station owner inputs the new prices, the new prices are now shown |
+|  Variants     | If the gas station owner doesn't own the station, it shows error |
+
+
+### Use case 8, UC8 - FR8, FR9: User reports a wrong price
+| Actors Involved        | User |
+| ------------- |:-------------:| 
+|  Precondition     | The gas station has already been claimed by a station owner |  
+|  Post condition     | The gas station owner receives a notification |
+|  Nominal Scenario     | User reports the gas station's prices, the owner receives a notifiation |
+|  Variants     | If the gas station hasn't been claimed, the user can't report it, but he can update the prices (FR11) |
+
+
+### Use case 9, UC9 - FR10:	User can add a gas station to the system
+| Actors Involved        | User |
+| ------------- |:-------------:| 
+|  Precondition     | The gas station the user is trying to add isn't already in EZGas |  
+|  Post condition     | The gas station is now added to EZGas |
+|  Nominal Scenario     | User inputs the data about the gas station, the gas station is added to the system |
+|  Variants     | If the gas station is already in the system, it shows an error |
+
+### Use case 10, UC10 - FR11:	User can modify the prices of a gas station
+| Actors Involved        | User |
+| ------------- |:-------------:| 
+|  Precondition     | The gas station hasn't been claimed by an owner yet |  
+|  Post condition     | The gas station's prices are updated |
+|  Nominal Scenario     | The user selects the gas station, inputs the new prices, the system is updated |
+|  Variants     | If the gas station has already been claimed, it tells the user that he can send a report (FR8, FR9) |
+
+### Use case 11, UC11 - FR12:	User should be able to log out
+| Actors Involved        | User |
+| ------------- |:-------------:| 
+|  Precondition     | User is logged in |  
+|  Post condition     | User is logged out |
+|  Nominal Scenario     | The user clicks on the log out button and he is logged out |
+|  Variants     |  |
+
+### Use case 12, UC12 - FR13:	User can write a review of a gas station
+| Actors Involved        | User |
+| ------------- |:-------------:| 
+|  Precondition     | The gas station is in the system |  
+|  Post condition     | A new review is added to the gas station |
+|  Nominal Scenario     | The user writes a review, and it is added to the station |
+|  Variants     | If the gas station doesn't exist in the system, it shows an error |
 
 
 ##### Scenario 1.1 
@@ -189,13 +240,6 @@ Barney is planning a long roadtrip. By using EZGas, he is able to see in advance
 |  2     |  |
 |  ...     |  |
 
-##### Scenario 1.2
-
-### Use case 2, UC2
-..
-
-### Use case
-..
 
 
 
