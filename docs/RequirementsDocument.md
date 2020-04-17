@@ -107,7 +107,43 @@ Barney is planning a long roadtrip. By using EZGas, he is able to see in advance
 
 
 ## Use case diagram
-\<define here UML Use case diagram UCD summarizing all use cases, and their relationships>
+
+```plantuml
+@startuml
+actor User as u
+actor Map_service as m
+actor Gas_station_owner as gso
+
+
+rectangle EZGas {
+	("Manage user account: FR1, FR12, FR6") as uacc
+	u -- uacc
+	gso -- uacc
+
+	("Display map: FR2") as fr2
+	m -- fr2
+	u -- fr2
+
+	("Show list of stations: FR3, FR4, FR5") as list
+	u -- list
+
+	("Update prices: FR7, FR11") as pr
+	u -- pr
+	gso -- pr
+
+	("Add a gas station: FR10") as add
+	u -- add
+
+	("User reports: FR8, FR9") as rep
+	u -- rep
+	gso -- rep
+
+	("Review: FR13") as rev
+	u -- rev
+}
+
+@enduml
+```
 
 
 
@@ -128,6 +164,7 @@ Barney is planning a long roadtrip. By using EZGas, he is able to see in advance
 |  Post condition     | A map of the user's location is shown, with the gas stations marked |
 |  Nominal Scenario     | EZgas gets the location from the GPS, loads the map, overlays the map with the gas stations present, and displays it |
 |  Variants     | Shows error if the GPS is not able to locate the user, or if the map service itself throws an error |
+
 
 
 
