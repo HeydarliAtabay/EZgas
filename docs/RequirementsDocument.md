@@ -1,10 +1,10 @@
 # Requirements Document 
 
-Authors:
+Authors: Atabay Heydarli, Davide Lo Bianco, Gianluca Canitano, Nadir Casciola
 
-Date:
+Date: 19/04/2020
 
-Version:
+Version: 1.0
 
 # Contents
 
@@ -19,8 +19,7 @@ Version:
 	+ [Non functional requirements](#non-functional-requirements)
 - [Use case diagram and use cases](#use-case-diagram-and-use-cases)
 	+ [Use case diagram](#use-case-diagram)
-	+ [Use cases](#use-cases)
-    	+ [Relevant scenarios](#relevant-scenarios)
+	+ [Use cases and relevant scenarios](#Use-cases-and-relevant-scenarios)
 - [Glossary](#glossary)
 - [System design](#system-design)
 - [Deployment diagram](#deployment-diagram)
@@ -145,7 +144,7 @@ rectangle EZGas {
 @enduml
 ```
 
-
+# Use cases and relevant scenarios
 
 ### Use case 1, UC1 - FR1:	Log in
 | Actors Involved        | User |
@@ -293,9 +292,17 @@ rectangle EZGas {
 \<concepts are used consistently all over the document, ex in use cases, requirements etc>
 
 # System Design
-\<describe here system design>
 
-\<must be consistent with Context diagram>
+```plantuml
+@startuml
+
+(Database) as db
+(Web application) as wb
+
+db -- wb
+
+@enduml
+```
 
 # Deployment Diagram 
 
