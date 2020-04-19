@@ -410,4 +410,4 @@ db -- wb
 
 # Deployment Diagram 
 
-\<describe here deployment diagram >
+![](docs/Graphic_files/Others/DeploymentDiagram1.jpg)
