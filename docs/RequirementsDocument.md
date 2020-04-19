@@ -286,11 +286,125 @@ rectangle EZGas {
 
 
 # Glossary
+```plantuml
+@startuml
 
-\<use UML class diagram to define important concepts in the domain of the system, and their relationships> 
+/' Classes '/
 
-\<concepts are used consistently all over the document, ex in use cases, requirements etc>
 
+
+class EZGas
+
+class PriceUpdate{
+  + ID 
+  + GasStation_ID
+  + Fuel_Type
+  + Old_Price
+  + New_Price
+  + Status
+}
+
+class UserAccount{
++ Account_ID
++ Name
++ Surname
++ E-mail
++ Username
++ Password
++ Telephone_number
++ Status
+}
+class GasStationOwner{
++ Owner_ID
++ GasStation_ID
++ P.IVA
+}
+class User(Driver)  {
++ Driver_ID
++ PreferredFuelType
+}
+class Administrator {
++ Admin_ID
++ AdminStatus
+}
+class GasStation  {
++ GasStation_ID
++ Address
++ City
++ CompanyName
++ Owner_ID
+}
+class Fuel{
++ Type
++ price
++ SelfService
+}
+
+/' Associations'/
+
+GasStationOwner "1" -down- "0..*" PriceUpdate : does
+Driver "1" -down- "0..*" PriceUpdate : does
+
+Driver -up-|>  Account 
+GasStationOwner -left-|> Account 
+Administrator -right-|> Account
+GasStationOwner "1"-down- "1..*" GasStation
+EZGas -- "0..*" Account :accounts
+GasStation "*" -right- "1..*" Fuel : Offers  
+
+GasStation "1" -left- "0..*" PriceUpdate : refers to 
+
+
+
+/' Notes '/
+legend top 
+The Glossary diagram for EZGas application
+
+endlegend
+
+note bottom of PriceUpdate
+Both users(driver) and Gas station
+owners can manage the prices of fuel
+A price update is added to the database
+only when the request of the change is
+confirmed(Status='Accepted') by the gas station owner.
+end note
+
+
+note right  of Fuel
+The price for the fuel types are differs
+related with the gas station
+The price can be vary if the station offers
+self service.
+end note
+
+
+
+note right of GasStationOwner
+Gas station owner can create an account
+only if he has valid P.IVA.
+end note
+
+note right of Account
+Each user should have at least Name,Surname,
+E-mail,Username,Password, Telephone_number
+in order to create an account.
+end note
+
+note left of Driver
+Driver(user) have access for changing
+the prices of fuel in different gas stations.
+end note
+
+
+note left of Administrator
+Administrator also has an account
+but with admin rights.
+end note
+
+
+@enduml
+```
 # System Design
 
 ```plantuml
