@@ -362,7 +362,7 @@ The Glossary diagram for EZGas application
 
 endlegend
 
-note bottom of PriceUpdate
+note left of PriceUpdate
 Both users(driver) and Gas station
 owners can manage the prices of fuel
 A price update is added to the database
