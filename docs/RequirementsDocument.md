@@ -323,10 +323,7 @@ class Driver  {
 + Driver_ID
 + PreferredFuelType
 }
-class Administrator {
-+ Admin_ID
-+ AdminStatus
-}
+
 class GasStation  {
 + GasStation_ID
 + Address
@@ -347,7 +344,6 @@ Driver "1" -down- "0..*" PriceUpdate : does
 
 Driver -up-|>  UserAccount 
 GasStationOwner -left-|> UserAccount 
-Administrator -right-|> UserAccount
 GasStationOwner "1"-down- "1..*" GasStation
 EZGas -- "0..*" UserAccount :accounts
 GasStation "*" -right- "1..*" Fuel : Offers  
@@ -394,12 +390,6 @@ end note
 note left of Driver
 Driver(user) have access for changing
 the prices of fuel in different gas stations.
-end note
-
-
-note left of Administrator
-Administrator also has an account
-but with admin rights.
 end note
 
 
