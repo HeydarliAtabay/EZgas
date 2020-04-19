@@ -345,11 +345,11 @@ class Fuel{
 GasStationOwner "1" -down- "0..*" PriceUpdate : does
 Driver "1" -down- "0..*" PriceUpdate : does
 
-Driver -up-|>  Account 
-GasStationOwner -left-|> Account 
-Administrator -right-|> Account
+Driver -up-|>  UserAccount 
+GasStationOwner -left-|> UserAccount 
+Administrator -right-|> UserAccount
 GasStationOwner "1"-down- "1..*" GasStation
-EZGas -- "0..*" Account :accounts
+EZGas -- "0..*" UserAccount :accounts
 GasStation "*" -right- "1..*" Fuel : Offers  
 
 GasStation "1" -left- "0..*" PriceUpdate : refers to 
@@ -385,7 +385,7 @@ Gas station owner can create an account
 only if he has valid P.IVA.
 end note
 
-note right of Account
+note right of UserAccount
 Each user should have at least Name,Surname,
 E-mail,Username,Password, Telephone_number
 in order to create an account.
