@@ -319,7 +319,7 @@ class GasStationOwner{
 + GasStation_ID
 + P.IVA
 }
-class User(Driver)  {
+class Driver  {
 + Driver_ID
 + PreferredFuelType
 }
@@ -343,9 +343,9 @@ class Fuel{
 /' Associations'/
 
 GasStationOwner "1" -down- "0..*" PriceUpdate : does
-User(Driver) "1" -down- "0..*" PriceUpdate : does
+Driver "1" -down- "0..*" PriceUpdate : does
 
-User(Driver) -up-|>  Account 
+Driver -up-|>  Account 
 GasStationOwner -left-|> Account 
 Administrator -right-|> Account
 GasStationOwner "1"-down- "1..*" GasStation
@@ -391,7 +391,7 @@ E-mail,Username,Password, Telephone_number
 in order to create an account.
 end note
 
-note left of User(Driver)
+note left of Driver
 Driver(user) have access for changing
 the prices of fuel in different gas stations.
 end note
