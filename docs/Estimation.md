@@ -43,30 +43,19 @@ First we consider an estimate by product decomposition, then an estimate by acti
 
 |         Activity name    | Estimated effort (person hours)   |             
 | ----------- | ------------------------------- | 
-
-| 1. Requirements | 30 |
-| ----------- | ------------------------------- | 
+| **1. Requirements** | **30** |
 | 1.1 User requirements | 15|
 | 1.2 Use cases | 15 |
-
-| 2. Design | 30 |
-| ----------- | ------------------------------- | 
+| **2. Design** | **30** | 
 | 2.1 High level design | 15 |
 | 2.2 Low level design | 15 |
-
-| 3. Implementation | 60 |
-| ----------- | ------------------------------- | 
+| **3. Implementation** | **60** |
 | 3.1 Front end| 25|
 | 3.2 Back end| 25|
 | 3.3 Interfaces| 10|
+| **4. Testing** |  **15**|
+| **5. Review** |  **15**|
 
-| 4. Testing |  15|
-| ----------- | ------------------------------- | 
-
-| 5. Review |  15|
-| ----------- | ------------------------------- |
-
-###
-Gantt chart:
+### Gantt chart:
 
 ![](docs/Graphic_files/Others/gantt.jpg)
