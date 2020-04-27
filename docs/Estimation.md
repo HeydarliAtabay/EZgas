@@ -1,23 +1,23 @@
 # Project Estimation  
 
-Authors:
+Authors: Atabay Heydarli, Davide Lo Bianco, Gianluca Canitano, Nadir Casciola
 
-Date:
+Date: 27/04/2020
 
-Version:
+Version: 1.0
 
 # Contents
 
 
 
-- [Estimate by product decomposition]
-- [Estimate by activity decomposition ]
+- [Estimate by product decomposition](#Estimate-by-product-decomposition)
+- [Estimate by activity decomposition](#Estimate-by-activity-decomposition)
 
 
 
 # Estimation approach
 
-<Consider the EZGas  project as described in YOUR requirement document, assume that you are going to develop the project INDEPENDENT of the deadlines of the course>
+First we consider an estimate by product decomposition, then an estimate by activity decomposition.
 
 # Estimate by product decomposition
 
@@ -43,9 +43,30 @@ Version:
 
 |         Activity name    | Estimated effort (person hours)   |             
 | ----------- | ------------------------------- | 
-| | |
 
+| 1. Requirements | 30 |
+| ----------- | ------------------------------- | 
+| 1.1 User requirements | 15|
+| 1.2 Use cases | 15 |
+
+| 2. Design | 30 |
+| ----------- | ------------------------------- | 
+| 2.1 High level design | 15 |
+| 2.2 Low level design | 15 |
+
+| 3. Implementation | 60 |
+| ----------- | ------------------------------- | 
+| 3.1 Front end| 25|
+| 3.2 Back end| 25|
+| 3.3 Interfaces| 10|
+
+| 4. Testing |  15|
+| ----------- | ------------------------------- | 
+
+| 5. Review |  15|
+| ----------- | ------------------------------- |
 
 ###
-Insert here Gantt chart with above activities
+Gantt chart:
 
+![](docs/Graphic_files/Others/gantt.jpg)
