@@ -263,7 +263,7 @@ package "it.polito.ezgas.repository" {
 
 package "it.polito.ezgas.serviceimpl" {
    Class GasStationServiceImpl
-   interface UserServiceImpl
+   Class UserServiceImpl
 } 
 
 }
