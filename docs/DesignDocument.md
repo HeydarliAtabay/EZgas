@@ -222,7 +222,54 @@ Contains Service classes that implement the Service Interfaces in the Service pa
 
 <Based on the official requirements and on the Spring Boot design guidelines, define the required classes (UML class diagram) of the back-end in the proper packages described in the high-level design section.>
 
+```plantuml
+@startuml
 
+package "Backend" {
+
+package "it.polito.ezgas.service" {
+   interface "GasStationService"
+   interface "UserService"
+} 
+
+package "it.polito.ezgas.controller" {
+    Class UserController
+    Class GasStationController
+}
+
+package "it.polito.ezgas.converter" {
+    Class GasStationConverter
+    Class UserConverter
+    Class PriceReportConverter
+}
+
+package "it.polito.ezgas.dto" {
+    Class GasStationDto
+    Class UserDto
+    Class PriceReportDto
+}
+
+package "it.polito.ezgas.entity" {
+    Class GasStation
+    Class User
+    Class PriceReport
+}
+
+package "it.polito.ezgas.repository" {
+    Class GasStationRepository
+    Class UserRepository
+    Class PriceReportRepository
+}
+
+package "it.polito.ezgas.serviceimpl" {
+   Class GasStationServiceImpl
+   interface UserServiceImpl
+} 
+
+}
+
+@enduml
+```
 
 
 
