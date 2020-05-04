@@ -1,17 +1,17 @@
 # Design Document 
 
 
-Authors: 
+Authors: Atabay Heydarli, Davide Lo Bianco, Gianluca Canitano, Nadir Casciola
 
-Date:
+Date: 4/5/2020
 
-Version:
+Version: 1.0
 
 
 # Contents
 
-- [High level design](#package-diagram)
-- [Low level design](#class-diagram)
+- [High level design](#High-level-design)
+- [Low level design](#Low-level-design)
 - [Verification traceability matrix](#verification-traceability-matrix)
 - [Verification sequence diagrams](#verification-sequence-diagrams)
 
@@ -220,7 +220,7 @@ Contains Service classes that implement the Service Interfaces in the Service pa
 
 # Low level design
 
-<Based on the official requirements and on the Spring Boot design guidelines, define the required classes (UML class diagram) of the back-end in the proper packages described in the high-level design section.>
+
 
 ```plantuml
 @startuml
