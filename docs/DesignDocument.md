@@ -357,11 +357,11 @@ PriceReport -> PriceReport : 3 - updateTrustLevel()
 
 
 @enduml
-'''
+```
 
 **Scenario 10**
 
-'''plantuml
+```plantuml
 @startuml
 
 User -> GasStation : 1 - getGasStationById()
@@ -370,7 +370,7 @@ PriceReport -> User : 3 - getUserReporter()
 User -> User : 4 updateTrustLevel()
 
 @enduml
-'''
+```
 
 
 
