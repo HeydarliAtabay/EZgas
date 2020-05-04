@@ -345,6 +345,9 @@ package "it.polito.ezgas.serviceimpl" {
 
 # Verification sequence diagrams 
 
+**Use Case 7**
+
+![](docs/Graphic_files/Others/Use_Case_7)
 
 **Use Case 9**
 
