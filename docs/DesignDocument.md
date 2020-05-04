@@ -233,7 +233,9 @@ package "it.polito.ezgas.service" {
 } 
 
 package "it.polito.ezgas.controller" {
-    Class UserController
+    Class UserController {
+        addUser(String name, String email, String pwd)
+    }
 
     Class GasStationController {
         GasStationDto getGasStationById(String id)
@@ -281,6 +283,7 @@ package "it.polito.ezgas.entity" {
         GasStation gs
         Int price
         String fuelType
+        updateTrustLevel()
     }
 }
 
@@ -312,8 +315,24 @@ package "it.polito.ezgas.serviceimpl" {
 # Verification traceability matrix
 
 \<for each functional requirement from the requirement document, list which classes concur to implement it>
-
-
+|FR|GasStation|User| PriceReport| GasStationController|UserController|
+|---|---|---|---|---|---|
+| FR1.1| | X|||X|
+| FR1.2| | X|||X|
+| FR1.3| |X |||X|
+| FR1.4| | X|||X|
+| FR2| | X|||X|
+| FR3.1| X| ||X||
+| FR3.2| X| ||X||
+| FR3.3| X| ||X||
+| FR4.1| X| ||X||
+| FR4.2| X| ||X||
+| FR4.3| X| ||X||
+| FR4.4| X| ||X||
+| FR4.5| X| ||X||
+| FR5.1| X|X |X|X|X|
+| FR5.2| X|X |X|X|X|
+| FR5.3| X| |X|X|X|
 
 
 
@@ -326,7 +345,31 @@ package "it.polito.ezgas.serviceimpl" {
 # Verification sequence diagrams 
 \<select key scenarios from the requirement document. For each of them define a sequence diagram showing that the scenario can be implemented by the classes and methods in the design>
 
+**Use Case 9**
 
+'''plantuml
+@startuml
+
+PriceReport -> User : 1 - getUser()
+User -> PriceReport : 2 - getTrustLevel()
+PriceReport -> PriceReport : 3 - updateTrustLevel()
+
+
+@enduml
+'''
+
+**Scenario 10**
+
+'''plantuml
+@startuml
+
+User -> GasStation : 1 - getGasStationById()
+GasStation -> PriceReport : 2 - signalPrice(correct)
+PriceReport -> User : 3 - getUserReporter()
+User -> User : 4 updateTrustLevel()
+
+@enduml
+'''
 
 
 
