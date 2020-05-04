@@ -347,7 +347,7 @@ package "it.polito.ezgas.serviceimpl" {
 
 **Use Case 7**
 
-![](docs/Graphic_files/Others/Use_Case_7)
+![](docs/Graphic_files/Others/Use_Case_7.png)
 
 **Use Case 9**
 
