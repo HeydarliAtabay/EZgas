@@ -234,7 +234,11 @@ package "it.polito.ezgas.service" {
 
 package "it.polito.ezgas.controller" {
     Class UserController
-    Class GasStationController
+
+    Class GasStationController {
+        GasStationDto getGasStationById(String id)
+        signalPrice(Bool correct)
+    }
 }
 
 package "it.polito.ezgas.converter" {
@@ -250,9 +254,34 @@ package "it.polito.ezgas.dto" {
 }
 
 package "it.polito.ezgas.entity" {
-    Class GasStation
-    Class User
-    Class PriceReport
+    Class GasStation {
+        String id
+        String name
+        String address
+        Bool hasDiesel
+        Bool hasGasoline
+        Bool hasPremiumDiesel
+        Bool hasPremiumGasoline
+        Bool hasLPG
+        Bool hasMethane
+        List prices
+        User getUserReporter()
+    }
+
+    Class User {
+        String accountName
+        String password
+        String email
+        Int trustLevel        
+        updateTrustLevel(Bool increase)
+    }
+
+    Class PriceReport {
+        User user
+        GasStation gs
+        Int price
+        String fuelType
+    }
 }
 
 package "it.polito.ezgas.repository" {
