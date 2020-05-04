@@ -314,7 +314,8 @@ package "it.polito.ezgas.serviceimpl" {
 
 # Verification traceability matrix
 
-\<for each functional requirement from the requirement document, list which classes concur to implement it>
+
+
 |FR|GasStation|User| PriceReport| GasStationController|UserController|
 |---|---|---|---|---|---|
 | FR1.1| | X|||X|
@@ -343,11 +344,11 @@ package "it.polito.ezgas.serviceimpl" {
 
 
 # Verification sequence diagrams 
-\<select key scenarios from the requirement document. For each of them define a sequence diagram showing that the scenario can be implemented by the classes and methods in the design>
+
 
 **Use Case 9**
 
-'''plantuml
+```plantuml
 @startuml
 
 PriceReport -> User : 1 - getUser()
