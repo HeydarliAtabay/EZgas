@@ -1,17 +1,17 @@
 # Design Document 
 
 
-Authors: 
+Authors: Atabay Heydarli, Davide Lo Bianco, Gianluca Canitano, Nadir Casciola
 
-Date:
+Date: 4/5/2020
 
-Version:
+Version: 1.0
 
 
 # Contents
 
-- [High level design](#package-diagram)
-- [Low level design](#class-diagram)
+- [High level design](#High-level-design)
+- [Low level design](#Low-level-design)
 - [Verification traceability matrix](#verification-traceability-matrix)
 - [Verification sequence diagrams](#verification-sequence-diagrams)
 
@@ -220,9 +220,88 @@ Contains Service classes that implement the Service Interfaces in the Service pa
 
 # Low level design
 
-<Based on the official requirements and on the Spring Boot design guidelines, define the required classes (UML class diagram) of the back-end in the proper packages described in the high-level design section.>
 
 
+```plantuml
+@startuml
+
+package "Backend" {
+
+package "it.polito.ezgas.service" {
+   interface "GasStationService"
+   interface "UserService"
+} 
+
+package "it.polito.ezgas.controller" {
+    Class UserController {
+        addUser(String name, String email, String pwd)
+    }
+
+    Class GasStationController {
+        GasStationDto getGasStationById(String id)
+        signalPrice(Bool correct)
+    }
+}
+
+package "it.polito.ezgas.converter" {
+    Class GasStationConverter
+    Class UserConverter
+    Class PriceReportConverter
+}
+
+package "it.polito.ezgas.dto" {
+    Class GasStationDto
+    Class UserDto
+    Class PriceReportDto
+}
+
+package "it.polito.ezgas.entity" {
+    Class GasStation {
+        String id
+        String name
+        String address
+        Bool hasDiesel
+        Bool hasGasoline
+        Bool hasPremiumDiesel
+        Bool hasPremiumGasoline
+        Bool hasLPG
+        Bool hasMethane
+        List prices
+        User getUserReporter()
+    }
+
+    Class User {
+        String accountName
+        String password
+        String email
+        Int trustLevel        
+        updateTrustLevel(Bool increase)
+    }
+
+    Class PriceReport {
+        User user
+        GasStation gs
+        Int price
+        String fuelType
+        updateTrustLevel()
+    }
+}
+
+package "it.polito.ezgas.repository" {
+    Class GasStationRepository
+    Class UserRepository
+    Class PriceReportRepository
+}
+
+package "it.polito.ezgas.serviceimpl" {
+   Class GasStationServiceImpl
+   Class UserServiceImpl
+} 
+
+}
+
+@enduml
+```
 
 
 
@@ -235,9 +314,26 @@ Contains Service classes that implement the Service Interfaces in the Service pa
 
 # Verification traceability matrix
 
-\<for each functional requirement from the requirement document, list which classes concur to implement it>
 
 
+|FR|GasStation|User| PriceReport| GasStationController|UserController|
+|---|---|---|---|---|---|
+| FR1.1| | X|||X|
+| FR1.2| | X|||X|
+| FR1.3| |X |||X|
+| FR1.4| | X|||X|
+| FR2| | X|||X|
+| FR3.1| X| ||X||
+| FR3.2| X| ||X||
+| FR3.3| X| ||X||
+| FR4.1| X| ||X||
+| FR4.2| X| ||X||
+| FR4.3| X| ||X||
+| FR4.4| X| ||X||
+| FR4.5| X| ||X||
+| FR5.1| X|X |X|X|X|
+| FR5.2| X|X |X|X|X|
+| FR5.3| X| |X|X|X|
 
 
 
@@ -248,9 +344,36 @@ Contains Service classes that implement the Service Interfaces in the Service pa
 
 
 # Verification sequence diagrams 
-\<select key scenarios from the requirement document. For each of them define a sequence diagram showing that the scenario can be implemented by the classes and methods in the design>
+
+**Use Case 7**
+
+![](docs/Graphic_files/Others/Use_Case_7.png)
+
+**Use Case 9**
+
+```plantuml
+@startuml
+
+PriceReport -> User : 1 - getUser()
+User -> PriceReport : 2 - getTrustLevel()
+PriceReport -> PriceReport : 3 - updateTrustLevel()
 
 
+@enduml
+```
+
+**Scenario 10**
+
+```plantuml
+@startuml
+
+User -> GasStation : 1 - getGasStationById()
+GasStation -> PriceReport : 2 - signalPrice(correct)
+PriceReport -> User : 3 - getUserReporter()
+User -> User : 4 updateTrustLevel()
+
+@enduml
+```
 
 
 
