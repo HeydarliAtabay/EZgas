@@ -2,6 +2,7 @@ package it.polito.ezgas.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import exception.GPSDataException;
@@ -9,7 +10,10 @@ import exception.InvalidGasStationException;
 import exception.InvalidGasTypeException;
 import exception.InvalidUserException;
 import exception.PriceException;
+import it.polito.ezgas.converter.GasStationConverter;
 import it.polito.ezgas.dto.GasStationDto;
+import it.polito.ezgas.entity.GasStation;
+import it.polito.ezgas.repository.GasStationRepository;
 import it.polito.ezgas.service.GasStationService;
 
 /**
@@ -17,11 +21,24 @@ import it.polito.ezgas.service.GasStationService;
  */
 @Service
 public class GasStationServiceimpl implements GasStationService {
+	
+	//instance of the GasStationRepository
+	@Autowired
+	private GasStationRepository repo;
 
 	@Override
 	public GasStationDto getGasStationById(Integer gasStationId) throws InvalidGasStationException {
-		// TODO Auto-generated method stub
-		return null;
+		//query the database
+		GasStation gs = repo.findOne(gasStationId);
+		
+		//gs is null if there is no gas station with the provided id
+		if (gs == null) {
+			throw new InvalidGasStationException("Gas station not found with id " + gasStationId);
+		}
+		
+		//create dto and return it
+		GasStationConverter conv = new GasStationConverter();
+		return conv.convert(gs);
 	}
 
 	@Override
@@ -82,9 +99,4 @@ public class GasStationServiceimpl implements GasStationService {
 		return null;
 	}
 	
-	
-	
-	
-	
-
 }
