@@ -20,7 +20,11 @@ Version:
 
     <Define here criteria, predicates and the combination of predicates for each function of each class.
     Define test cases to cover all equivalence classes and boundary conditions.
-    In the table, report the description of the black box test case and the correspondence with the JUnit black box test case name/number>
+    In the table, report the description of the black box test case and (traceability) the correspondence with the JUnit test case writing the 
+    class and method name that contains the test case>
+    <JUnit test classes must be in src/test/java/it/polito/ezgas   You find here, and you can use,  class EZGasApplicationTests.java that is executed before 
+    the set up of all Spring components
+    >
 
  ### **Class *class_name* - method *name***
 
@@ -75,8 +79,10 @@ Version:
 # White Box Unit Tests
 
 ### Test cases definition
-
-    <Report here all the created JUnit test cases, and the units/classes they test >
+    
+    <JUnit test classes must be in src/test/java/it/polito/ezgas>
+    <Report here all the created JUnit test cases, and the units/classes under test >
+    <For traceability write the class and method name that contains the test case>
 
 
 | Unit name | JUnit test case |
