@@ -1,4 +1,4 @@
-# Unit Testing Documentation template
+# Unit Testing Documentation
 
 Authors:
 
