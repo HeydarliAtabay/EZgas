@@ -30,10 +30,13 @@ public class UserServiceimpl implements UserService {
 
 	@Override
 	public UserDto getUserById(Integer userId) throws InvalidUserException {
-		//query the database and throw exception if user not found
+		if (userId < 0) {
+			throw new InvalidUserException("Error: invalid (negative) user id");
+	    }
+		
 		User u = repo.findOne(userId);
 	    if (u == null) {
-			throw new InvalidUserException("No user found with id: " + userId);
+			return null;
 	    }
 	    //convert to UserDto and return it
 		UserConverter conv = new UserConverter();
@@ -66,6 +69,10 @@ public class UserServiceimpl implements UserService {
 
 	@Override
 	public Boolean deleteUser(Integer userId) throws InvalidUserException {
+		if (userId < 0) {
+			throw new InvalidUserException("Error: invalid (negative) user id");
+	    }
+		
 		//gets all users and if it finds the one with the provided id it deletes it
 		for (UserDto uDto : this.getAllUsers()) {
 			if (uDto.getUserId() == userId) {
@@ -74,8 +81,7 @@ public class UserServiceimpl implements UserService {
 			}
 		}
 		
-		//if no user with that id is found it throws an exception
-		throw new InvalidUserException("Error: no user with id " + userId + " found\n");
+		return false;
 	}
 
 	@Override
@@ -104,14 +110,43 @@ public class UserServiceimpl implements UserService {
 
 	@Override
 	public Integer increaseUserReputation(Integer userId) throws InvalidUserException {
-		// TODO Auto-generated method stub
-		return null;
+		if (userId < 0) {
+			throw new InvalidUserException("Error: invalid (negative) user id");
+	    }
+		
+		UserDto u = this.getUserById(userId);
+		if (u == null) {
+			return null;
+		}
+		
+		Integer rep = u.getReputation();
+		if (rep < 5) {
+			rep = rep + 1;
+			u.setReputation(rep);
+			this.saveUser(u);
+		}
+		return rep;
 	}
 
 	@Override
 	public Integer decreaseUserReputation(Integer userId) throws InvalidUserException {
-		// TODO Auto-generated method stub
-		return null;
+		if (userId < 0) {
+			throw new InvalidUserException("Error: invalid (negative) user id");
+	    }
+		
+		UserDto u = this.getUserById(userId);
+		if (u == null) {
+			return null;
+		}
+		
+		Integer rep = u.getReputation();
+		if (rep == -5) {
+			return rep;
+		}
+		rep = rep - 1;
+		u.setReputation(rep);
+		this.saveUser(u);
+		return rep;
 	}
 	
 }
