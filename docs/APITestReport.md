@@ -26,7 +26,6 @@ Version:
 | Scenario |  name |
 | ------------- |:-------------:| 
 |  Precondition     |  |
-| |  |
 |  Post condition     |   |
 | Step#        | Description  |
 |  1     |  ... |  
