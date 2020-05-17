@@ -14,10 +14,11 @@ Version:
 
 - [Tests](#tests)
 
+- [API Tests](#APItests)
 
 # Dependency graph 
 
-     <report the here the dependency graph of the classes, using plantuml>
+     <report the here the dependency graph of the classes in it/polito/Ezgas, using plantuml>
      
 # Integration approach
 
@@ -28,35 +29,16 @@ Version:
 
 #  Tests
 
-### Test cases definition
-    
-    <JUnit test classes must be in src/test/java/it/polito/ezgas>
-    <Report here all the created JUnit test cases, and the units/classes under test >
-    <For traceability write the class and method name that contains the test case>
+   <define below a table for each integration step. For each integration step report the group of classes under test, and the names of
+     JUnit test cases applied to them>
 
 
-| Unit name | JUnit test case |
+| Classes  | JUnit test cases |
 |--|--|
 |||
 |||
 ||||
 
-### Code coverage report
-
-    <Add here the screenshot report of the statement and branch coverage obtained using
-    the Eclemma tool. >
-
-
-### Loop coverage analysis
-
-    <Identify significant loops in the units and reports the test cases
-    developed to cover zero, one or multiple iterations >
-
-|Unit name | Loop rows | Number of iterations | JUnit test case |
-|---|---|---|---|
-|||||
-|||||
-||||||
-
+# API Tests
 
 
