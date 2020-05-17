@@ -17,10 +17,11 @@ Version:
 
 # Scenarios
 
-```
-<If needed, define here additional scenarios for the application>
 
-##### Scenario UCx.y
+<If needed, define here additional scenarios for the application. Scenarios should be named
+ referring the UC they detail>
+
+## Scenario UCx.y
 
 | Scenario |  name |
 | ------------- |:-------------:| 
