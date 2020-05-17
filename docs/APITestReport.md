@@ -10,7 +10,7 @@ Version:
 
 - [Scenarios](#scenarios)
 
-- [Coverage of scenarios](#scenario-coverage)
+- [Coverage of scenarios and FR](#scenario-coverage)
 - [Coverage of non-functional requirements](#nfr-coverage)
 
 
@@ -44,8 +44,8 @@ Report also for each of the scenarios the (one or more) API JUnit tests that cov
 
 | Scenario ID | Functional Requirements covered | API Test(s) | 
 | ----------- | ------------------------------- | ----------- | 
-| 1           | FRx                             |             |             
-| 2           | FRy                             |             |             
+|  ..         | FRx                             |             |             
+|  ..         | FRy                             |             |             
 | ...         |                                 |             |             
 | ...         |                                 |             |             
 | ...         |                                 |             |             
