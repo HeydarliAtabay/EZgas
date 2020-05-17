@@ -46,7 +46,7 @@ Version:
 
 ## API Tests
 
-   <The last integration step  should correspond to API testing, or tests applied to all classes implemented the APIs defined in the Service package>
+   <The last integration step  should correspond to API testing, or tests applied to all classes implementing the APIs defined in the Service package>
 
 | Classes  | JUnit test cases |
 |--|--|
