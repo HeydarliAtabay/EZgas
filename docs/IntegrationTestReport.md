@@ -14,8 +14,6 @@ Version:
 
 - [Tests](#tests)
 
-- [API Tests](#APItests)
-- 
 - [Scenarios](#scenarios)
 
 - [Coverage of scenarios and FR](#scenario-coverage)
@@ -51,7 +49,7 @@ Version:
 |||
 
 
-## API Tests
+## Step n API Tests
 
    <The last integration step  should correspond to API testing, or tests applied to all classes implementing the APIs defined in the Service package>
 
@@ -89,7 +87,7 @@ Report also for each of the scenarios the (one or more) API JUnit tests that cov
 
 
 
-| Scenario ID | Functional Requirements covered | API Test(s) | 
+| Scenario ID | Functional Requirements covered | JUnit  Test(s) | 
 | ----------- | ------------------------------- | ----------- | 
 |  ..         | FRx                             |             |             
 |  ..         | FRy                             |             |             
