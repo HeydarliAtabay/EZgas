@@ -40,7 +40,7 @@ Version:1.0
 **Boundaries**:
 | Criteria | Boundary values |
 | -------- | --------------- |
-|    Sign of the price      | -1 0 1                |
+|    Sign of the price      | -1 0 1 |
 
 
 
