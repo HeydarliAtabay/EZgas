@@ -37,7 +37,8 @@ Version:1.0
 |          |     Negative      |
 
 
-**Boundaries**:
+**Boundaries**:**
+
 | Criteria | Boundary values |
 | -------- | --------------- |
 |    Sign of the price      | -1, 0, 1                 |
