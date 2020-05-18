@@ -40,7 +40,7 @@ Version:1.0
 **Boundaries**:
 | Criteria | Boundary values |
 | -------- | --------------- |
-|    Sign of the price      | -1 0 1 |
+|    Sign of the price      | -1, 0, 1                 |
 
 
 
@@ -91,7 +91,7 @@ Version:1.0
 |[0,maxint]|positive|Valid|gasStation.setGasStationId(12345);gasStation.getGasStationId()-->True|it.polito.ezgas.EzGasApplicationTests.TestgetGasStationId2|
 
 
-Class *GasStation* - method *getDieselPrice()***
+ ### **Class *GasStation* - method *getDieselPrice()***
 
 **Criteria for method *getDieselPrice*:**
 	
@@ -204,7 +204,7 @@ Class *GasStation* - method *getDieselPrice()***
 |[0,maxint]|positive|Valid|user.setReputation(111111);user.getReputation()-->True|it.polito.ezgas.EzGasApplicationTests.TestgetReputation2|
 
 
-Class *User* - method *getAdmin***
+ ### **Class *User* - method *getAdmin***
 
 **Criteria for method *getAdmin*:**
 	
