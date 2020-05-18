@@ -230,7 +230,7 @@ Version:1.0
 **Combination of predicates**:
 
 | Correctness | Valid / Invalid | Description of the test case | JUnit test case |
-|-------|-------|-------|-------|-------|
+|-------|-------|-------|-------|
 |True|Valid|user.setAdmin(True);user.getAdmin()-->True|it.polito.ezgas.EzGasApplicationTests.TestgetAdmin1|
 |False|Valid|user.setAdmin(False);user.getAdmin()-->True|it.polito.ezgas.EzGasApplicationTests.TestgetAdmin2|
 
