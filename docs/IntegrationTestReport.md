@@ -1,4 +1,4 @@
-# Integration Test Documentation
+# Integration and API Test Documentation
 
 Authors:
 
@@ -28,7 +28,9 @@ Version:
 # Integration approach
 
     <Write here the integration sequence you adopted, in general terms (top down, bottom up, mixed) and as sequence
-    (ex: step1: class A, step 2: class A+B, step 3: class A+B+C, etc)>
+    (ex: step1: class A, step 2: class A+B, step 3: class A+B+C, etc)> 
+    <The last integration step corresponds to API testing at level of Service package>
+    <Tests at level of Controller package will be done later>
 
 
 
