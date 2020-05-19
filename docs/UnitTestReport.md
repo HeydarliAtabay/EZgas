@@ -239,16 +239,15 @@ Version:1.0
 
 ### Test cases definition
     
-    <JUnit test classes must be in src/test/java/it/polito/ezgas>
-    <Report here all the created JUnit test cases, and the units/classes under test >
-    <For traceability write the class and method name that contains the test case>
-
 
 | Unit name | JUnit test case |
 |--|--|
-|||
-|||
-||||
+|GasStation.getGasStationId()|TestgetGasStationId1();TestgetGasStationId2()|
+|GasStation.getDieselPrice()|TestgetDieselPrice1();TestgetDieselPrice2();TestgetDieselPrice3();TestgetDieselPrice4();|
+|GasStation.setGasPrice()|TestsetGasPrice1();TestsetGasPrice2();TestsetGasPrice3();TestsetGasPrice4();TestsetGasPrice5();|
+|User.getUserId()|TestgetUserId1();TestgetUserId2();|
+|User.getReputation()|TestgetReputation1();TestgetReputation2();|
+|User.getAdmin()|TestgetAdmin1();TestgetAdmin2()|
 
 ### Code coverage report
 
@@ -263,9 +262,12 @@ Version:1.0
 
 |Unit name | Loop rows | Number of iterations | JUnit test case |
 |---|---|---|---|
-|||||
-|||||
-||||||
+|GasStation.getGasStationId()|-|-|TestgetGasStationId1();TestgetGasStationId2()|
+|GasStation.getDieselPrice()|-|-|TestgetDieselPrice1();TestgetDieselPrice2();TestgetDieselPrice3();TestgetDieselPrice4();|
+|GasStation.setGasPrice()|-|-|TestsetGasPrice1();TestsetGasPrice2();TestsetGasPrice3();TestsetGasPrice4();TestsetGasPrice5();|
+|User.getUserId()|-|-|TestgetUserId1();TestgetUserId2();|
+|User.getReputation()|-|-|TestgetReputation1();TestgetReputation2();|
+|User.getAdmin()|-|-|TestgetAdmin1();TestgetAdmin2()|
 
 
 
