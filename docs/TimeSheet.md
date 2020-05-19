@@ -11,7 +11,7 @@ These figures will not be used to evaluate neither the project nor the team
 | apr 13 - 19|14 hours | | | | | | | | 
 | apr 20 - 27| | 4 hours| | | | | | | 
 | apr 28 - 3 | |12 hours | | | | | | | 
-| may 4 - 10 | | |10 hours | | | | | | 
+| may 4 - 10 | | |10 hours |6 hours | | | | | 
 | may 11 - 17| | |4 hours | | | | | | 
 | may 18 - 24| | | | | | | | | 
 | may 25 - 31| | | | | | | | | 
