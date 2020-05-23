@@ -23,52 +23,52 @@ Version:
 
 # Dependency graph 
 
-      ```plantuml
-     @startuml
-     
-      class User
-      class GasStation
-      
-      class UserDto
-      class GasStationDto
-      class IdPw
-      class LoginDto
-      
-      class UserConverter
-      class GasStationConverter
+```plantuml
+@startuml
 
-      class GasStationRepository
-      class UserRepository
-      
-      class UserController
-      class GasStationController
+class User
+class GasStation
 
-      class UserServiceimpl
-      class GasStationServiceimpl
-     
-     UserConverter -down-> User
-     UserConverter -down-> UserDto
+class UserDto
+class GasStationDto
+class IdPw
+class LoginDto
 
-     GasStationConverter -down-> GasStation
-     GasStationConverter -down-> GasStationDto
+class UserConverter
+class GasStationConverter
 
-     GasStationServiceimpl -down-> GasStationConverter
-     GasStationServiceimpl -> GasStation
-     GasStationServiceimpl -> GasStationDto
-     GasStationServiceimpl -down-> GasStationRepository
+class GasStationRepository
+class UserRepository
 
-     UserServiceimpl -down-> UserConverter
-     UserServiceimpl -> User
-     UserServiceimpl -> UserDto
-     UserServiceimpl -down-> UserRepository
-     UserServiceimpl -down-> LoginDto
-     UserServiceimpl -down-> IdPw
+class UserController
+class GasStationController
 
-     UserController -down-> UserDto
-     GasStationController -down-> GasStationDto
+class UserServiceimpl
+class GasStationServiceimpl
 
-     @enduml
-     ```
+UserConverter -down-> User
+UserConverter -down-> UserDto
+
+GasStationConverter -down-> GasStation
+GasStationConverter -down-> GasStationDto
+
+GasStationServiceimpl -down-> GasStationConverter
+GasStationServiceimpl -> GasStation
+GasStationServiceimpl -> GasStationDto
+GasStationServiceimpl -down-> GasStationRepository
+
+UserServiceimpl -down-> UserConverter
+UserServiceimpl -> User
+UserServiceimpl -> UserDto
+UserServiceimpl -down-> UserRepository
+UserServiceimpl -down-> LoginDto
+UserServiceimpl -down-> IdPw
+
+UserController -down-> UserDto
+GasStationController -down-> GasStationDto
+
+@enduml
+```
      
 # Integration approach
 
