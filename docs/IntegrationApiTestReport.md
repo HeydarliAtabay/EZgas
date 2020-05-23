@@ -23,7 +23,52 @@ Version:
 
 # Dependency graph 
 
-     <report the here the dependency graph of the classes in it/polito/Ezgas, using plantuml>
+      ```plantuml
+     @startuml
+     
+      class User
+      class GasStation
+      
+      class UserDto
+      class GasStationDto
+      class IdPw
+      class LoginDto
+      
+      class UserConverter
+      class GasStationConverter
+
+      class GasStationRepository
+      class UserRepository
+      
+      class UserController
+      class GasStationController
+
+      class UserServiceimpl
+      class GasStationServiceimpl
+     
+     UserConverter -down-> User
+     UserConverter -down-> UserDto
+
+     GasStationConverter -down-> GasStation
+     GasStationConverter -down-> GasStationDto
+
+     GasStationServiceimpl -down-> GasStationConverter
+     GasStationServiceimpl -> GasStation
+     GasStationServiceimpl -> GasStationDto
+     GasStationServiceimpl -down-> GasStationRepository
+
+     UserServiceimpl -down-> UserConverter
+     UserServiceimpl -> User
+     UserServiceimpl -> UserDto
+     UserServiceimpl -down-> UserRepository
+     UserServiceimpl -down-> LoginDto
+     UserServiceimpl -down-> IdPw
+
+     UserController -down-> UserDto
+     GasStationController -down-> GasStationDto
+
+     @enduml
+     ```
      
 # Integration approach
 
