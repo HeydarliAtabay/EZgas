@@ -8,9 +8,9 @@ Version:
 
 # Contents
 
-- [Dependency graph](#dependency graph)
+- [Dependency graph](#dependency-graph)
 
-- [Integration approach](#integration)
+- [Integration approach](#integration-approach)
 
 - [Tests](#tests)
 
@@ -72,27 +72,56 @@ GasStationController -down-> GasStationDto
      
 # Integration approach
 
-    <Write here the integration sequence you adopted, in general terms (top down, bottom up, mixed) and as sequence
-    (ex: step1: class A, step 2: class A+B, step 3: class A+B+C, etc)> 
-    <The last integration step corresponds to API testing at level of Service package>
-    <Tests at level of Controller package will be done later>
+The general approach used is bottom up.
+ 
+ Step 1: 
+ * **GasStation**
+ * **User**
+ * **GasStationDto**
+ * **UserDto**
+ 
+ Step 2:
+   * GasStation + GasStationDto + **GasStationCoverter**
+   * User + UserDto + **UserConverter**
+
+Step 3:
+* GasStation + GasStationDto + GasStationConverter + **GasStationServiceimpl**
+* User + UserDto + UserConverter + **UserServiceimpl**
 
 
 
 #  Tests
 
-   <define below a table for each integration step. For each integration step report the group of classes under test, and the names of
-     JUnit test cases applied to them>
-
 ## Step 1
 | Classes  | JUnit test cases |
 |--|--|
-|||
+|GasStation|TestgetGasStationId1()|
+||TestgetGasStationId2()|
+||TestgetDieselPrice1()|
+||TestgetDieselPrice2()|
+||TestgetDieselPrice3()|
+||TestgetDieselPrice4()|
+||TestsetGasPrice1()|
+||TestsetGasPrice2()|
+||TestsetGasPrice3()|
+||TestsetGasPrice4()|
+||TestsetGasPrice5()|
+|User|TestgetUserId1()|
+||TestgetUserId2()|
+||TestgetReputation1()|
+||TestgetReputation2()|
+||TestgetAdmin1()|
+||TestgetAdmin2()|
 
 
 ## Step 2
 | Classes  | JUnit test cases |
 |--|--|
+|UserConverter|adminUserToDtoTest()|
+||normalUserToDtoTest()|
+||adminUserDtoToUserTest()|
+||normalUserDtoToUserTest()|
+|||
 |||
 
 
