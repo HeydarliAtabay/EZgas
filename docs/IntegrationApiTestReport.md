@@ -117,12 +117,12 @@ Step 3:
 ## Step 2
 | Classes  | JUnit test cases |
 |--|--|
-|UserConverter|adminUserToDtoTest()|
+|User + UserDto + UserConverter|adminUserToDtoTest()|
 ||normalUserToDtoTest()|
 ||adminUserDtoToUserTest()|
 ||normalUserDtoToUserTest()|
-|||
-|||
+|GasStation + GasStationDto + GasStationCoverter|gasStationToDtoTest()|
+||dtoToGasStationTest()|
 
 
 ## Step n API Tests
