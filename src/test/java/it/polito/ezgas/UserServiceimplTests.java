@@ -1,0 +1,145 @@
+package it.polito.ezgas;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import exception.InvalidUserException;
+
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+import it.polito.ezgas.dto.UserDto;
+import it.polito.ezgas.entity.User;
+import it.polito.ezgas.repository.UserRepository;
+import it.polito.ezgas.service.impl.UserServiceimpl;
+
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class UserServiceimplTests {
+	@Test
+	//tests exception if negative userId in getUserById()
+	public void getUserByIdExceptionTest() {
+		UserRepository repo = mock(UserRepository.class);
+		UserServiceimpl s = new UserServiceimpl(repo);
+		try {
+			s.getUserById(-1);
+			fail();
+		} catch (InvalidUserException e) {
+			assertTrue(true);
+		}
+	}
+	
+	@Test
+	//tests return null if no user found in getUserById()
+	public void getUserByIdNullTest() {
+		Integer userId = 15;
+		UserRepository repo = mock(UserRepository.class);
+		when(repo.findOne(userId)).thenReturn(null);
+		UserServiceimpl s = new UserServiceimpl(repo);
+		try {
+			UserDto u = s.getUserById(userId);
+			assertTrue(u == null);
+		} catch (InvalidUserException e) {
+			fail(); //it should only throw the exception if userId is negative
+		}
+	}
+	
+	@Test
+	//tests with a mock repo with two users getAllUsers()
+	public void getAllUsersTest() {
+		List<User> uList = new ArrayList<User>();
+		
+		User u1 = new User();
+		u1.setUserName("user1");
+		User u2 = new User();
+		u2.setUserName("user2");
+		
+		uList.add(u1);
+		uList.add(u2);
+		
+		UserRepository repo = mock(UserRepository.class);
+		when(repo.findAll()).thenReturn(uList);
+		
+		UserServiceimpl s = new UserServiceimpl(repo);
+		List<UserDto> ulDto = s.getAllUsers();
+		
+		
+		assertTrue(ulDto.size() == 2);
+		//with the two conditions in OR because order of the users shouldn't matter
+		assertTrue(ulDto.get(0).getUserName().equals("user1") || ulDto.get(0).getUserName().equals("user2"));
+		assertTrue(ulDto.get(1).getUserName().equals("user1") || ulDto.get(1).getUserName().equals("user2"));
+	}
+	
+	@Test
+	//tests, with an empty mock repo, getAllUsers()
+	public void getAllUsersEmptyTest() {
+		UserRepository repo = mock(UserRepository.class);
+		when(repo.findAll()).thenReturn(new ArrayList<User>());
+		
+		UserServiceimpl s = new UserServiceimpl(repo);
+		List<UserDto> ulDto = s.getAllUsers();
+		assertTrue(ulDto.size() == 0);
+	}
+	
+	@Test
+	//tests if it throws the exception with a negative userId
+	public void deleteUserExceptionTest() {
+		UserRepository repo = mock(UserRepository.class);
+		UserServiceimpl s = new UserServiceimpl(repo);
+		
+		try {
+			s.deleteUser(-5);
+			fail(); //it should throw the exception
+		} catch (InvalidUserException e) {
+			assertTrue(true);
+		}
+	}
+	
+	@Test
+	//tests (with mock repo) the deletion of a user
+	public void deleteUserTest() {
+		List<User> uList = new ArrayList<User>();
+		User u = new User();
+		u.setUserId(5);
+		uList.add(u);
+		
+		UserRepository repo = mock(UserRepository.class);
+		when(repo.findAll()).thenReturn(uList);
+		UserServiceimpl s = new UserServiceimpl(repo);
+		
+		try {
+			Boolean b = s.deleteUser(5);
+			assertTrue(b);
+		} catch (InvalidUserException e) {
+			fail();
+		}
+	}
+	
+	@Test
+	//tests (with mock repo) the deletion of a user wich does not exist
+	public void deleteNonExistingUserTest() {
+		List<User> uList = new ArrayList<User>();
+		User u = new User();
+		u.setUserId(5);
+		uList.add(u);
+		
+		UserRepository repo = mock(UserRepository.class);
+		when(repo.findAll()).thenReturn(uList);
+		UserServiceimpl s = new UserServiceimpl(repo);
+		
+		try {
+			Boolean b = s.deleteUser(10);
+			assertTrue(!b);
+		} catch (InvalidUserException e) {
+			fail();
+		}
+	}
+}
