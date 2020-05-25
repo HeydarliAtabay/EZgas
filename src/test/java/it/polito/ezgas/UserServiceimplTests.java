@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import exception.InvalidLoginDataException;
 import exception.InvalidUserException;
 
 import static org.mockito.Mockito.mock;
@@ -16,6 +17,8 @@ import java.util.List;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import it.polito.ezgas.dto.IdPw;
+import it.polito.ezgas.dto.LoginDto;
 import it.polito.ezgas.dto.UserDto;
 import it.polito.ezgas.entity.User;
 import it.polito.ezgas.repository.UserRepository;
@@ -138,6 +141,167 @@ public class UserServiceimplTests {
 		try {
 			Boolean b = s.deleteUser(10);
 			assertTrue(!b);
+		} catch (InvalidUserException e) {
+			fail();
+		}
+	}
+	
+	@Test
+	//performs a successful login (with a mock database)
+	public void loginSuccessfulTest() {
+		List<User> uList = new ArrayList<User>();
+		User u = new User();
+		u.setUserId(5);
+		u.setEmail("testEmail");
+		u.setPassword("testPwd");
+		uList.add(u);
+		
+		IdPw cr = new IdPw("testEmail", "testPwd");
+		
+		UserRepository repo = mock(UserRepository.class);
+		when(repo.findAll()).thenReturn(uList);
+		UserServiceimpl s = new UserServiceimpl(repo);
+		
+		try {
+			LoginDto lDto = s.login(cr);
+			assertTrue(lDto.getEmail().equals("testEmail"));
+			assertTrue(lDto.getUserId() == 5);
+		} catch (InvalidLoginDataException e) {
+			fail(); //email and password are correct, so it shouldn't throw the exception
+		}
+	}
+	
+	@Test
+	//performs an unsuccessful login with wrong password (with a mock database)
+	public void loginWrongPwdTest() {
+		List<User> uList = new ArrayList<User>();
+		User u = new User();
+		u.setUserId(5);
+		u.setEmail("testEmail");
+		u.setPassword("testPwd");
+		uList.add(u);
+		
+		IdPw cr = new IdPw("testEmail", "wrongPwd");
+		
+		UserRepository repo = mock(UserRepository.class);
+		when(repo.findAll()).thenReturn(uList);
+		UserServiceimpl s = new UserServiceimpl(repo);
+		
+		try {
+			s.login(cr);
+			fail();
+		} catch (InvalidLoginDataException e) {
+			assertTrue(true);
+		}
+	}
+	
+	@Test
+	//performs an unsuccessful login with an email not on the database (with a mock database)
+	public void loginWrongEmailTest() {
+		List<User> uList = new ArrayList<User>();
+		User u = new User();
+		u.setUserId(5);
+		u.setEmail("testEmail");
+		u.setPassword("testPwd");
+		uList.add(u);
+		
+		IdPw cr = new IdPw("wrongEmail", "testPwd");
+		
+		UserRepository repo = mock(UserRepository.class);
+		when(repo.findAll()).thenReturn(uList);
+		UserServiceimpl s = new UserServiceimpl(repo);
+		
+		try {
+			s.login(cr);
+			fail();
+		} catch (InvalidLoginDataException e) {
+			assertTrue(true);
+		}
+	}
+	
+	@Test
+	//tests successful increaseUserReputation()
+	public void increaseReputationTest() {
+		Integer userId = 5;
+		Integer rep = 3;
+		
+		User u = new User();
+		u.setReputation(rep);
+		u.setUserId(userId);
+		
+		UserRepository repo = mock(UserRepository.class);
+		when(repo.findOne(userId)).thenReturn(u);
+		UserServiceimpl s = new UserServiceimpl(repo);
+		
+		try {
+			Integer newRep = s.increaseUserReputation(userId);
+			assertTrue(newRep == rep + 1);
+		} catch (InvalidUserException e) {
+			fail();
+		}
+	}
+	
+	@Test
+	//tests increaseUserReputation() with user rep at 5
+	public void increaseReputationMaximumTest() {
+		Integer userId = 5;
+		Integer rep = 5;
+		
+		User u = new User();
+		u.setReputation(rep);
+		u.setUserId(userId);
+		
+		UserRepository repo = mock(UserRepository.class);
+		when(repo.findOne(userId)).thenReturn(u);
+		UserServiceimpl s = new UserServiceimpl(repo);
+		
+		try {
+			Integer newRep = s.increaseUserReputation(userId);
+			assertTrue(newRep == rep);
+		} catch (InvalidUserException e) {
+			fail();
+		}
+	}
+	
+	@Test
+	//tests successful decreaseUserReputation()
+	public void decreaseReputationTest() {
+		Integer userId = 5;
+		Integer rep = 3;
+		
+		User u = new User();
+		u.setReputation(rep);
+		u.setUserId(userId);
+		
+		UserRepository repo = mock(UserRepository.class);
+		when(repo.findOne(userId)).thenReturn(u);
+		UserServiceimpl s = new UserServiceimpl(repo);
+		
+		try {
+			Integer newRep = s.decreaseUserReputation(userId);
+			assertTrue(newRep == rep - 1);
+		} catch (InvalidUserException e) {
+			fail();
+		}
+	}
+	
+	@Test
+	//tests decreaseUserReputation() with user rep at -5 (minimum)
+	public void decreaseReputationMinimumTest() {
+		Integer userId = 5;
+		Integer rep = -5;
+		
+		User u = new User();
+		u.setReputation(rep);
+		u.setUserId(userId);
+		
+		UserRepository repo = mock(UserRepository.class);
+		when(repo.findOne(userId)).thenReturn(u);
+		UserServiceimpl s = new UserServiceimpl(repo);
+		
+		try {
+			Integer newRep = s.decreaseUserReputation(userId);
+			assertTrue(newRep == rep);
 		} catch (InvalidUserException e) {
 			fail();
 		}
