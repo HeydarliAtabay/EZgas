@@ -2,6 +2,8 @@ package it.polito.ezgas;
 
 import static org.junit.Assert.assertTrue;
 
+import java.sql.Timestamp;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -113,4 +115,73 @@ public class GasStationConverterTests {
 		assertTrue(gs.getReportDependability() == 1.5);
 		assertTrue(gs.getUser().getUserName().equals("userNameGS"));
 	}
+	//NFR Tests
+		@Test
+		public void NFR2_gasStationToDtoTest(){
+			
+			GasStation gs = new GasStation(
+					"gsNameTest",
+					"gsAddTest",
+					true,
+					true,
+					true,
+					true,
+					false,
+					"car2go",
+					47.568,
+					7.568,
+					2,
+					2,
+					2,
+					2,
+					-1,
+					15,
+					"timestamp",
+					1.6);
+			
+			User u = new User();
+			u.setUserName("userInGs");
+			gs.setUser(u);
+			
+			GasStationConverter conv = new GasStationConverter();
+			
+			Timestamp timeS = new Timestamp(System.currentTimeMillis());
+			GasStationDto gsDto = conv.convert(gs);
+			Timestamp timeF = new Timestamp(System.currentTimeMillis());
+			long exec = timeF.getTime()-timeS.getTime();
+			assertTrue(exec<=500);
+		}
+		@Test
+		public void NFR2_DtotogasStationTest() {
+			GasStationDto gsDto = new GasStationDto(
+					16,
+					"gsName",
+					"gsAddr",
+					true,
+					true,
+					true,
+					true,
+					false, //methane
+					"enjoy",
+					45.89,
+					8.89,
+					2,
+					2,
+					2,
+					2,
+					-1,
+					15,
+					"timestamp",
+					1.5);
+			
+			UserDto uDto = new UserDto();
+			uDto.setUserName("userNameGS");
+			gsDto.setUserDto(uDto);
+			GasStationConverter conv = new GasStationConverter();
+			Timestamp timeS = new Timestamp(System.currentTimeMillis());
+			GasStation gs = conv.convertFromDto(gsDto);
+			Timestamp timeF = new Timestamp(System.currentTimeMillis());
+			long exec = timeF.getTime()-timeS.getTime();
+			assertTrue(exec<=500);
+		}
 }
