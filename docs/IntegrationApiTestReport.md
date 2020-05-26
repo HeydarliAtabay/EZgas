@@ -131,6 +131,7 @@ Step 3:
 |--|--|
 |User + UserDto + UserConverter + UserServiceimpl|getUserByIdExceptionTest()|
 ||getUserByIdNullTest()|
+||getUserByIdTest()|
 ||getAllUsersTest()|
 ||getAllUsersEmptyTest()|
 ||deleteUserExceptionTest()|

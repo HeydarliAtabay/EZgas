@@ -56,6 +56,26 @@ public class UserServiceimplTests {
 	}
 	
 	@Test
+	//getUserById() successful test
+	public void getUserByIdTest() {
+		User u = new User();
+		u.setUserId(5);
+		u.setUserName("testUN");
+		
+		UserRepository repo = mock(UserRepository.class);
+		when(repo.findOne(5)).thenReturn(u);
+		UserServiceimpl s = new UserServiceimpl(repo);
+		
+		try {
+			UserDto uDto = s.getUserById(5);
+			assertTrue(uDto.getUserId() == 5);
+			assertTrue(uDto.getUserName().equals("testUN"));
+		} catch (InvalidUserException e) {
+			fail();
+		}
+	}
+	
+	@Test
 	//tests with a mock repo with two users getAllUsers()
 	public void getAllUsersTest() {
 		List<User> uList = new ArrayList<User>();
