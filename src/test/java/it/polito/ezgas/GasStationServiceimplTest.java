@@ -54,6 +54,7 @@ public class GasStationServiceimplTest {
 	}
 
 	
+	
 	@Test
 	public void getCarSharingTest() throws PriceException, GPSDataException {
 		//  try to create a station with a non empty car sharing
@@ -289,6 +290,166 @@ public class GasStationServiceimplTest {
 		assertTrue(GasDto.get(1).getGasStationName().equals("Q8") || GasDto.get(1).getGasStationName().equals("BP"));
 
 	 }
+	 
+	// NFR Tests
+	 @Test
+		public void testNFRAddModifyStation() throws PriceException, GPSDataException {
+			GasStationDto gasStationDto = new GasStationDto(0, "GasStation1", "Via Pietro Cossa 2", true, false, true, false, true,
+					"", 10, 30, -1, -1, -1, -1, -1, -1, "", 0);
+
+			long start = System.currentTimeMillis();
+
+			GasStationDto gasStationDtoReceived = gasStationService.saveGasStation(gasStationDto);
+
+			long finish = System.currentTimeMillis();
+			long timeElapsed = finish - start;
+
+			assert (double)timeElapsed / 1000 < 0.5;
+		}
+
+		@Test
+		public void testNFRDeleteGasStation() throws PriceException, GPSDataException, InvalidGasStationException {
+			GasStationDto gasStationDto = new GasStationDto(0, "GasStation1", "Via Pietro Cossa 2", true, false, true, false, true,
+					"", 10, 30, -1, -1, -1, -1, -1, -1, "", 0);
+
+			GasStationDto gasStationDtoReceived = gasStationService.saveGasStation(gasStationDto);
+
+			long start = System.currentTimeMillis();
+
+			gasStationService.deleteGasStation(gasStationDtoReceived.getGasStationId());
+
+			long finish = System.currentTimeMillis();
+			long timeElapsed = finish - start;
+
+			assert (double)timeElapsed / 1000 < 0.5;
+		}
+
+		@Test
+		public void testNFRListGasStations() throws PriceException, GPSDataException {
+			GasStationDto gasStationDto1 = new GasStationDto(null, "GasStation1", "Via Pietro cossa 1", true, true, true, false, false,
+					"", 10, 30, -1, -1, -1, -1, -1, -1, null, 0);
+
+			GasStationDto gasStationDto2 = new GasStationDto(null, "GasStation2", "Via Roma 13", true, false, true, false, true,
+					"Car2Go", 3, 30.004, -1, -1, -1, -1, -1, -1, null, 0);
+
+			GasStationDto gasStationDto3 = new GasStationDto(null, "GasStation3", "Via Garibaldi 21", false, false, true, true, true,
+					"Car2Go", 67.3, 30.0, -1, -1, -1, -1, -1, -1, null, 0);
+
+			GasStationDto gasStationDto4 = new GasStationDto(null, "GasStation4", "Corso Vittorio Emanuele 1", false, false, false, false, true,
+					"Enjoy", 10, 55, -1, -1, -1, -1, -1, -1, null, 0);
+			GasStationDto gasStationDtoReceived1 = gasStationService.saveGasStation(gasStationDto1);
+			GasStationDto gasStationDtoReceived2 = gasStationService.saveGasStation(gasStationDto2);
+			GasStationDto gasStationDtoReceived3 = gasStationService.saveGasStation(gasStationDto3);
+			GasStationDto gasStationDtoReceived4 = gasStationService.saveGasStation(gasStationDto4);
+
+			long start = System.currentTimeMillis();
+
+			gasStationService.getAllGasStations();
+
+			long finish = System.currentTimeMillis();
+			long timeElapsed = finish - start;
+
+			assert (double)timeElapsed / 1000 < 0.5;
+		}
+
+		@Test
+		public void testNFRSearchGasStation() throws PriceException, GPSDataException {
+			GasStationDto gasStationDto1 = new GasStationDto(null, "GasStation1", "Via Roma 1", true, true, true, false, false,
+					"", 10, 30, -1, -1, -1, -1, -1, -1, null, 0);
+
+			GasStationDto gasStationDto2 = new GasStationDto(null, "GasStation2", "Via Roma 13", true, false, true, false, true,
+					"Car2Go", 3, 30.004, -1, -1, -1, -1, -1, -1, null, 0);
+
+			GasStationDto gasStationDto3 = new GasStationDto(null, "GasStation3", "Via Garibaldi 21", false, false, true, true, true,
+					"Car2Go", 67.3, 30.0, -1, -1, -1, -1, -1, -1, null, 0);
+
+			GasStationDto gasStationDto4 = new GasStationDto(null, "GasStation4", "Corso Vittorio Emanuele 1", false, false, false, false, true,
+					"Enjoy", 10, 55, -1, -1, -1, -1, -1, -1, null, 0);
+			GasStationDto gasStationDtoReceived1 = gasStationService.saveGasStation(gasStationDto1);
+			GasStationDto gasStationDtoReceived2 = gasStationService.saveGasStation(gasStationDto2);
+			GasStationDto gasStationDtoReceived3 = gasStationService.saveGasStation(gasStationDto3);
+			GasStationDto gasStationDtoReceived4 = gasStationService.saveGasStation(gasStationDto4);
+
+			long start = System.currentTimeMillis();
+
+			gasStationService.getGasStationsByProximity(30.0, 4.0);
+
+			long finish = System.currentTimeMillis();
+			long timeElapsed = finish - start;
+
+			assert (double)timeElapsed / 1000 < 0.5;
+		}
+
+		@Test
+		public void testNFRSearchGasStation2() throws InvalidGasTypeException, PriceException, GPSDataException {
+			GasStationDto gasStationDto1 = new GasStationDto(null, "GasStation1", "Via Roma 1", true, true, true, false, false,
+					"", 10, 30, -1, -1, -1, -1, -1, -1, null, 0);
+
+			GasStationDto gasStationDto2 = new GasStationDto(null, "GasStation2", "Via Roma 13", true, false, true, false, true,
+					"Car2Go", 3, 30.004, -1, -1, -1, -1, -1, -1, null, 0);
+
+			GasStationDto gasStationDto3 = new GasStationDto(null, "GasStation3", "Via Garibaldi 21", false, false, true, true, true,
+					"Car2Go", 67.3, 30.0, -1, -1, -1, -1, -1, -1, null, 0);
+
+			GasStationDto gasStationDto4 = new GasStationDto(null, "GasStation4", "Corso Vittorio Emanuele 1", false, false, false, false, true,
+					"Enjoy", 10, 55, -1, -1, -1, -1, -1, -1, null, 0);
+			GasStationDto gasStationDtoReceived1 = gasStationService.saveGasStation(gasStationDto1);
+			GasStationDto gasStationDtoReceived2 = gasStationService.saveGasStation(gasStationDto2);
+			GasStationDto gasStationDtoReceived3 = gasStationService.saveGasStation(gasStationDto3);
+			GasStationDto gasStationDtoReceived4 = gasStationService.saveGasStation(gasStationDto4);
+
+			long start = System.currentTimeMillis();
+
+			gasStationService.getGasStationsWithoutCoordinates("Diesel", "Car2Go");
+
+			long finish = System.currentTimeMillis();
+			long timeElapsed = finish - start;
+
+			assert (double)timeElapsed / 1000 < 0.5;
+		}
+
+		@Test
+		public void testNFRAddReport() throws PriceException, GPSDataException, InvalidGasStationException, InvalidUserException {
+			GasStationDto gasStationDto = new GasStationDto(0, "GasStation1", "Via Roma 1", true, false, true, false, true,
+					"", 10, 30, -1, -1, -1, -1, -1, -1, "", 0);
+
+			GasStationDto gasStationDtoReceived = gasStationService.saveGasStation(gasStationDto);
+			UserDto newUser = new UserDto(0, "maumorisio", "se20", "mor@gmail.com", 0);
+			newUser.setAdmin(false);
+
+			UserDto saveUserResult = userService.saveUser(newUser);
+
+			long start = System.currentTimeMillis();
+
+			gasStationService.setReport(gasStationDtoReceived.getGasStationId(), 3, 4, 5, 3, 2, saveUserResult.getUserId());
+
+			long finish = System.currentTimeMillis();
+			long timeElapsed = finish - start;
+
+			assert (double)timeElapsed / 1000 < 0.5;
+		}
+
+		@Test
+		public void testNFREvaluateReport() throws PriceException, InvalidUserException, InvalidGasStationException, GPSDataException {
+			GasStationDto gasStationDto = new GasStationDto(0, "GasStation1", "Via Roma 1", true, false, true, false, true,
+					"", 10, 30, -1, -1, -1, -1, -1, -1, "", 0);
+
+			GasStationDto gasStationDtoReceived = gasStationService.saveGasStation(gasStationDto);
+			UserDto newUser = new UserDto(0, "maumorisio", "se20", "mor@gmail.com", 0);
+			newUser.setAdmin(false);
+			UserDto saveUserResult = userService.saveUser(newUser);
+
+			gasStationService.setReport(gasStationDtoReceived.getGasStationId(), 3, 4, 5, 4, 5, saveUserResult.getUserId());
+
+			long start = System.currentTimeMillis();
+
+			userService.increaseUserReputation(saveUserResult.getUserId());
+
+			long finish = System.currentTimeMillis();
+			long timeElapsed = finish - start;
+
+			assert (double)timeElapsed / 1000 < 0.5;
+		}
+	}
 
 
-}
