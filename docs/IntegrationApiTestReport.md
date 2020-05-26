@@ -144,11 +144,22 @@ Step 3:
 ||decreaseReputationTest()|
 ||decreaseReputationMinimumTest()|
 |GasStation + GasStationDto + GasStationConverter + GasStationServiceimpl|getGasStationByGasolineTypeTest1(),getGasStationByGasolineTypeTest2()|
-|||
-|||
-|||
-|||
-|||
+||GasStationInvalidLatTest()|
+||GasStationInvalidLonTest()|
+||getGasStationByProximityTest()|
+||getGasStationWithoutCoordinatesTest()|
+||getGasStationWithoutCoordinatesTest1()|
+||getGasStationsWithCoordinatesTest2()|
+||getGasStationsWithCoordinatesTest3()|
+||setReportTest1(),setReportTest2()|
+||getGasStationByIdNullTest()|
+||getGasStationByIdExceptionTest()|
+||getAllGasStationsEmptyTest()|
+||getAllGasStationsTest()|
+||getCarSharingTest()|
+||saveGasStationTest1()|
+||getGasStationByIdTest()|
+||deleteGasStationTest()|
 
 
 
