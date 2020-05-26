@@ -10,6 +10,8 @@ import it.polito.ezgas.entity.User;
 
 import static org.junit.Assert.assertTrue;
 
+import java.sql.Timestamp;
+
 import org.junit.Test;
 
 @RunWith(SpringRunner.class)
@@ -95,4 +97,71 @@ public class UserConverterTests {
 		assertTrue(u.getReputation() == 5);
 		assertTrue(!u.getAdmin());
 	}
+	//NFR Tests
+		@Test
+		public void NFR2_normalUserDtoToUserTest() {
+			UserDto uDto = new UserDto(
+					6,
+					"userNameTest",
+					"testPwd",
+					"testEmail",
+					5);
+			
+			UserConverter conv = new UserConverter();
+			Timestamp timeS = new Timestamp(System.currentTimeMillis());
+			User u = conv.convertFromDto(uDto);
+			Timestamp timeF = new Timestamp(System.currentTimeMillis());
+			long exec = timeF.getTime()-timeS.getTime();
+			assertTrue(exec<=500);
+		}
+		@Test
+		public void NFR2_adminUserDtoToUserTest() {
+			UserDto uDto = new UserDto(
+					6,
+					"userNameTest",
+					"testPwd",
+					"testEmail",
+					5,
+					true);
+			
+			UserConverter conv = new UserConverter();
+			Timestamp timeS = new Timestamp(System.currentTimeMillis());
+			User u = conv.convertFromDto(uDto);
+			Timestamp timeF = new Timestamp(System.currentTimeMillis());
+			long exec = timeF.getTime()-timeS.getTime();
+			assertTrue(exec<=500);
+		}
+		@Test
+		public void NFR2_normalUserToDtoTest() {
+			User u = new User(
+					"userNameTest",
+					"pwdTest",
+					"testEmail",
+					4);
+			u.setAdmin(false);
+			
+			UserConverter conv = new UserConverter();
+			Timestamp timeS = new Timestamp(System.currentTimeMillis());
+			UserDto uDto = conv.convert(u);
+			Timestamp timeF = new Timestamp(System.currentTimeMillis());
+			long exec = timeF.getTime()-timeS.getTime();
+			assertTrue(exec<=500);
+		}
+		@Test
+		public void NFR2_adminUserToDtoTest() {
+			User u = new User(
+					"userNameTest",
+					"pwdTest",
+					"testEmail",
+					4);
+			u.setAdmin(true);
+			
+			UserConverter conv = new UserConverter();
+			Timestamp timeS = new Timestamp(System.currentTimeMillis());
+			UserDto uDto = conv.convert(u);
+			Timestamp timeF = new Timestamp(System.currentTimeMillis());
+			long exec = timeF.getTime()-timeS.getTime();
+			assertTrue(exec<=500);
+			
+		}
 }
