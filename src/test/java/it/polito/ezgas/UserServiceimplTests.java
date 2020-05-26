@@ -2,6 +2,7 @@ package it.polito.ezgas;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -22,11 +23,15 @@ import it.polito.ezgas.dto.LoginDto;
 import it.polito.ezgas.dto.UserDto;
 import it.polito.ezgas.entity.User;
 import it.polito.ezgas.repository.UserRepository;
+import it.polito.ezgas.service.UserService;
 import it.polito.ezgas.service.impl.UserServiceimpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserServiceimplTests {
+	@Autowired
+	UserService userService;
+
 	@Test
 	//tests exception if negative userId in getUserById()
 	public void getUserByIdExceptionTest() {
@@ -326,4 +331,58 @@ public class UserServiceimplTests {
 			fail();
 		}
 	}
+	
+	// NFR Tests
+	@Test
+	public void testNFRAddModifyUser(){
+		UserDto newUser1 = new UserDto(-1, "maumorisio", "se20", "mor@gmail.com", 0);
+
+		long start = System.currentTimeMillis();
+
+		userService.saveUser(newUser1);
+
+		long finish = System.currentTimeMillis();
+		long timeElapsed = finish - start;
+
+		assert (double)timeElapsed / 1000 < 0.5;
+	}
+
+	
+
+	@Test
+	public void testNFRListUsers(){
+		UserDto newUser1 = new UserDto(-1, "mauriziomorisio", "se20", "se@gmail.com", 0);
+		UserDto newUser2 = new UserDto(-1, "lucaardito", "se20", "se@gmail.com", 0);
+
+		userService.saveUser(newUser1);
+		userService.saveUser(newUser2);
+
+		long start = System.currentTimeMillis();
+
+		userService.getAllUsers();
+
+		long finish = System.currentTimeMillis();
+		long timeElapsed = finish - start;
+
+		assert (double)timeElapsed / 1000 < 0.5;
+	}
+
+	@Test
+	public void testNFRPermissions() throws InvalidLoginDataException {
+		UserDto newUser1 = new UserDto(-1, "mauriziomorisio", "se20", "se@gmail.com", 0);
+		UserDto userDto = userService.saveUser(newUser1);
+		IdPw idPw = new IdPw();
+		idPw.setPw("se20");
+		idPw.setUser("se@gmail.com");
+
+		long start = System.currentTimeMillis();
+
+		userService.login(idPw);
+
+		long finish = System.currentTimeMillis();
+		long timeElapsed = finish - start;
+
+		assert (double)timeElapsed / 1000 < 0.5;
+	}
+
 }
