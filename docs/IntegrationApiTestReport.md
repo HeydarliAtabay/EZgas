@@ -165,19 +165,41 @@ Step 3:
 
 
 
+# Scenarios
+
+
+<If needed, define here additional scenarios for the application. Scenarios should be named
+ referring the UC they detail>
+
+## Scenario UCx.y
+
+| Scenario |  name |
+| ------------- |:-------------:| 
+|  Precondition     |  |
+|  Post condition     |   |
+| Step#        | Description  |
+|  1     |  ... |  
+|  2     |  ... |
+
+
 
 # Coverage of Scenarios and FR
 
 
+<Report in the following table the coverage of  scenarios (from official requirements and from above) vs FR. 
+Report also for each of the scenarios the (one or more) API JUnit tests that cover it. >
+
+
+
+
 | Scenario ID | Functional Requirements covered | JUnit  Test(s) | 
 | ----------- | ------------------------------- | ----------- | 
-|  10.1         | FR5.3, FR1.4, FR1.1                             |   getGasStationByIdTest()          |
-|          |                                 |    getUserByIdTest()         |
-|          |                                 |      increaseReputationTest()       |             
-|  10.2        | FR5.3, FR1.4, FR1.1                             |     getGasStationByIdTest()        |             
-|          |                                 |       getUserByIdTest()      |             
-|         |                                 |          decreaseReputationTest()   |             
-             
+|  ..         | FRx                             |             |             
+|  ..         | FRy                             |             |             
+| ...         |                                 |             |             
+| ...         |                                 |             |             
+| ...         |                                 |             |             
+| ...         |                                 |             |             
 
 
 
@@ -191,6 +213,10 @@ Step 3:
 
 | Non Functional Requirement | Test name |
 | -------------------------- | --------- |
-|                            |           |
+| NFR2-Performance           | EZGasApplicationTests.java- NFR2_TestgetGasStationId();NFR2_TestgetDieselPrice();NFR2_TestsetGasPrice();NFR2_TestgetUserId();NFR2_TestgetReputation();NFR2_TestgetAdmin()          |
+|                            | UserServiceimplTests.java -  testNFRListUsers();testNFRAddModifyUser();testNFRPermissions()           |
+|                            | GasStationConverterTests.java - NFR2_gasStationToDtoTest();NFR2_DtotogasStationTest()         |
+|                            | UserConverterTests.java - NFR2_normalUserDtoToUserTest();NFR2_adminUserDtoToUserTest();NFR2_normalUserToDtoTest();NFR2_adminUserToDtoTest()           |
+|                            | GasStationServiceimplTest.java - testNFRAddModifyStation();testNFRListGasStations();testNFRSearchGasStation();testNFRSearchGasStation2();testNFRAddReport();testNFREvaluateReport()          |
 
 
