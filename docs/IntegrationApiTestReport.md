@@ -1,10 +1,10 @@
 # Integration and API Test Documentation
 
-Authors:
+Authors: Atabay Heydarli, Davide Lo Bianco, Gianluca Canitano, Nadir Casciola
 
-Date:
+Date: 26/5/2020
 
-Version:
+Version: 1.0
 
 # Contents
 
@@ -16,8 +16,8 @@ Version:
 
 - [Scenarios](#scenarios)
 
-- [Coverage of scenarios and FR](#scenario-coverage)
-- [Coverage of non-functional requirements](#nfr-coverage)
+- [Coverage of scenarios and FR](#coverage-of-scenarios-and-fr)
+- [Coverage of non-functional requirements](#coverage-of-non-functional-requirements)
 
 
 
