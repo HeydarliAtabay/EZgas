@@ -125,13 +125,24 @@ Step 3:
 ||dtoToGasStationTest()|
 
 
-## Step n API Tests
-
-   <The last integration step  should correspond to API testing, or tests applied to all classes implementing the APIs defined in the Service package>
+## Step 3 API Tests
 
 | Classes  | JUnit test cases |
 |--|--|
-|||
+|User + UserDto + UserConverter + UserServiceimpl|getUserByIdExceptionTest()|
+||getUserByIdNullTest()|
+||getAllUsersTest()|
+||getAllUsersEmptyTest()|
+||deleteUserExceptionTest()|
+||deleteUserTest()|
+||deleteNonExistingUserTest()|
+||loginSuccessfulTest()|
+||loginWrongPwdTest()|
+||loginWrongEmailTest()|
+||increaseReputationTest()|
+||increaseReputationMaximumTest()|
+||decreaseReputationTest()|
+||decreaseReputationMinimumTest()|
 
 
 
