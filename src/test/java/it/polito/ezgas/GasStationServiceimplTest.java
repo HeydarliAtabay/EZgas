@@ -53,10 +53,6 @@ public class GasStationServiceimplTest {
 		allStations.forEach(gasStation -> gasStationRepository.delete(gasStation.getGasStationId()));
 	}
 
-	@Test
-	public void contextLoads() {
-	}
-
 	
 	@Test
 	public void getCarSharingTest() throws PriceException, GPSDataException {
