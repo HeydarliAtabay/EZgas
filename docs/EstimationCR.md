@@ -1,10 +1,10 @@
 # CR - Change Request Poll
 
-Authors:
+Authors: Atabay Heydarli, Davide Lo Bianco, Gianluca Canitano, Nadir Casciola
 
-Date:
+Date: 26/5/2020
 
-Version:
+Version: 1.0
 
 
 
@@ -12,22 +12,14 @@ Version:
 # CR priority and effort estimate
 
 
-<For each Change Request in the table define its priority (1 lowest, 5 highest) and the estimated effort
-to implement it. Effort is in person hours and includes all activities (design coding testing) and related
-update of documents. Consider only effort on the back end (changes to all packages EXCLUDING Controller), exclude effort on the front end.>
-
-<Change requests are described here http://softeng.polito.it/courses/04GSP/#Project   
- Refer STRICTLY to the CR ID on the web page >
-
 ### 
 
 |   CR          | Priority (1 lowest 5 highest)       |          Effort (person hours) |   
 | ----------- | ------------------------------- | ---------------------------- | 
-| CR1   | | |          
-| CR2   | | | 
-| CR3   | | | 
-| CR4   | | | 
-| CR5   | | | 
-| CR6   | | | 
-| CR7   | | | 
-| CR8   | | | 
+| CR1   | 4 |10|          
+| CR2   | 3 |12| 
+| CR3   | 3 |15| 
+| CR4   | 4 |7| 
+| CR5   | 2 |18| 
+| CR6   | 2 |19| 
+| CR7   | 3 |9| 
