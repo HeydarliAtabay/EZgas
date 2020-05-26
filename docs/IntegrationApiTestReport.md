@@ -143,6 +143,12 @@ Step 3:
 ||increaseReputationMaximumTest()|
 ||decreaseReputationTest()|
 ||decreaseReputationMinimumTest()|
+|GasStation + GasStationDto + GasStationConverter + GasStationServiceimpl|getGasStationByGasolineTypeTest1(),getGasStationByGasolineTypeTest2()|
+|||
+|||
+|||
+|||
+|||
 
 
 
