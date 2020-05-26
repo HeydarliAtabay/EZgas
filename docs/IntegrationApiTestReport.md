@@ -165,41 +165,17 @@ Step 3:
 
 
 
-# Scenarios
-
-
-<If needed, define here additional scenarios for the application. Scenarios should be named
- referring the UC they detail>
-
-## Scenario UCx.y
-
-| Scenario |  name |
-| ------------- |:-------------:| 
-|  Precondition     |  |
-|  Post condition     |   |
-| Step#        | Description  |
-|  1     |  ... |  
-|  2     |  ... |
-
-
-
 # Coverage of Scenarios and FR
-
-
-<Report in the following table the coverage of  scenarios (from official requirements and from above) vs FR. 
-Report also for each of the scenarios the (one or more) API JUnit tests that cover it. >
-
-
 
 
 | Scenario ID | Functional Requirements covered | JUnit  Test(s) | 
 | ----------- | ------------------------------- | ----------- | 
-|  ..         | FRx                             |             |             
-|  ..         | FRy                             |             |             
-| ...         |                                 |             |             
-| ...         |                                 |             |             
-| ...         |                                 |             |             
-| ...         |                                 |             |             
+|  10.1         | FR5.3, FR1.4, FR1.1                             |   getGasStationByIdTest()          |
+|          |                                 |    getUserByIdTest()         |
+|          |                                 |      increaseReputationTest()       |             
+|  10.2        | FR5.3, FR1.4, FR1.1                             |     getGasStationByIdTest()        |             
+|          |                                 |       getUserByIdTest()      |             
+|         |                                 |          decreaseReputationTest()   |             
 
 
 
