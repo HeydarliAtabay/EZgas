@@ -8,6 +8,8 @@ Version:
 
 # GUI testing
 
+This part of the document reports about testing at the GUI level. Tests are end to end, so they should cover the Use Cases, and corresponding scenarios.
+
 ## Coverage of Scenarios and FR
 
 ```
@@ -18,22 +20,28 @@ Version:
 
 | Scenario ID | Functional Requirements covered | API Test(s) | GUI Test(s) |
 | ----------- | ------------------------------- | ----------- | ----------- |
-| 1           | FR1                             |             |             |
-| 2           | FR1                             |             |             |
+| 1           | FRx                             |             |             |
+| 2           | FRy                             |             |             |
 | ...         |                                 |             |             |
 | ...         |                                 |             |             |
 | ...         |                                 |             |             |
 | ...         |                                 |             |             |
 
 
-# API Controllers Testing
+# REST  API  Testing
+
+This part of the document reports about testing the REST APIs of the back end. The REST APIs are implemented by classes in the Controller package of the back end. 
+Tests should cover each function of classes in the Controller package
 
 ## Coverage of Controller methods
 
-| class.method name | Functional Requirements covered | API Test(s) | 
+
+<Report in this table the test cases defined to cover all methods in Controller classes >
+
+| class.method name | Functional Requirements covered |REST  API Test(s) | 
 | ----------- | ------------------------------- | ----------- | 
-|             | FR1                             |             |     
-|             | FR1                             |             |             
+|             | FRx                             |             |     
+|             | FRy                             |             |             
 | ...         |                                 |             |             
 | ...         |                                 |             |             
 | ...         |                                 |             |             
