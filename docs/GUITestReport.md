@@ -18,14 +18,14 @@ This part of the document reports about testing at the GUI level. Tests are end 
 
 ### 
 
-| Scenario ID | Functional Requirements covered | API Test(s) | GUI Test(s) |
-| ----------- | ------------------------------- | ----------- | ----------- |
-| 1           | FRx                             |             |             |
-| 2           | FRy                             |             |             |
-| ...         |                                 |             |             |
-| ...         |                                 |             |             |
-| ...         |                                 |             |             |
-| ...         |                                 |             |             |
+| Scenario ID | Functional Requirements covered | GUI Test(s) |
+| ----------- | ------------------------------- | ----------- | 
+| 1           | FRx                             |             |             
+| 2           | FRy                             |             |             
+| ...         |                                 |             |         
+| ...         |                                 |             |             
+| ...         |                                 |             |             
+| ...         |                                 |             |             
 
 
 # REST  API  Testing
