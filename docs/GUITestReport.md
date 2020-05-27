@@ -40,8 +40,8 @@ Tests should cover each function of classes in the Controller package
 
 | class.method name | Functional Requirements covered |REST  API Test(s) | 
 | ----------- | ------------------------------- | ----------- | 
-|             | FRx                             |             |     
-|             | FRy                             |             |             
+|  ...           | FRx                             |             |     
+|  ...           | FRy                             |             |             
 | ...         |                                 |             |             
 | ...         |                                 |             |             
 | ...         |                                 |             |             
