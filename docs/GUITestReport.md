@@ -6,7 +6,7 @@ Date:
 
 Version:
 
-#GUI testing
+# GUI testing
 
 ## Coverage of Scenarios and FR
 
@@ -28,12 +28,12 @@ Version:
 
 # API Controllers Testing
 
-## Coverage of 
+## Coverage of Controller methods
 
 | class.method name | Functional Requirements covered | API Test(s) | 
 | ----------- | ------------------------------- | ----------- | 
-| 1           | FR1                             |             |     
-| 2           | FR1                             |             |             
+|             | FR1                             |             |     
+|             | FR1                             |             |             
 | ...         |                                 |             |             
 | ...         |                                 |             |             
 | ...         |                                 |             |             
