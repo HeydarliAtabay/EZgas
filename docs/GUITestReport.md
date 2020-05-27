@@ -1,4 +1,3 @@
-
 # GUI  Testing Documentation 
 
 Authors:
@@ -7,8 +6,9 @@ Date:
 
 Version:
 
+#GUI testing
 
-# Coverage of Scenarios and FR
+## Coverage of Scenarios and FR
 
 ```
 <Complete this table (from IntegrationApiTestReport.md) with the column on the right. In the GUI Test column, report the name of the .py  file with the test case you created.>
@@ -26,3 +26,15 @@ Version:
 | ...         |                                 |             |             |
 
 
+# API Controllers Testing
+
+## Coverage of 
+
+| class.method name | Functional Requirements covered | API Test(s) | 
+| ----------- | ------------------------------- | ----------- | 
+| 1           | FR1                             |             |     
+| 2           | FR1                             |             |             
+| ...         |                                 |             |             
+| ...         |                                 |             |             
+| ...         |                                 |             |             
+| ...         |                                 |             |             
