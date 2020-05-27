@@ -1,5 +1,8 @@
 package it.polito.ezgas;
 import static org.junit.Assert.assertTrue;
+
+import java.sql.Timestamp;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,7 +19,7 @@ public class EZGasApplicationTests {
 	public void TestgetGasStationId1() {
 		GasStation gasStation=new GasStation();
 	
-		int gasStationID=-12345;
+		int gasStationID=12345;
 		
 		gasStation.setGasStationId(gasStationID);
 		assert(gasStation.getGasStationId()==gasStationID);
@@ -142,4 +145,59 @@ public class EZGasApplicationTests {
 		user.setAdmin(false);
 		assertTrue(user.getAdmin()==false);
 	}
+	//NFR Tests
+		@Test
+		public void NFR2_TestgetGasStationId(){
+			GasStation gasStation=new GasStation();
+			Timestamp timeS = new Timestamp(System.currentTimeMillis());
+			gasStation.setGasStationId(12345);
+			Timestamp timeF = new Timestamp(System.currentTimeMillis());
+			long exec = timeF.getTime()-timeS.getTime();
+			assertTrue(exec<=500);
+			}
+		@Test
+		public void NFR2_TestgetDieselPrice(){
+			GasStation gasStation=new GasStation();	
+			Timestamp timeS = new Timestamp(System.currentTimeMillis());
+			gasStation.setDieselPrice(4.5);
+			Timestamp timeF = new Timestamp(System.currentTimeMillis());
+			long exec = timeF.getTime()-timeS.getTime();
+			assertTrue(exec<=500);
+			}
+		@Test
+		public void NFR2_TestsetGasPrice(){
+			GasStation gasStation=new GasStation();
+			Timestamp timeS = new Timestamp(System.currentTimeMillis());
+			gasStation.setGasPrice(4.5);
+			Timestamp timeF = new Timestamp(System.currentTimeMillis());
+			long exec = timeF.getTime()-timeS.getTime();
+			assertTrue(exec<=500);
+			}
+			@Test
+			public void NFR2_TestgetUserId(){
+			User user = new User();
+			Timestamp timeS = new Timestamp(System.currentTimeMillis());
+			user.setUserId(100099);
+			Timestamp timeF = new Timestamp(System.currentTimeMillis());
+			long exec = timeF.getTime()-timeS.getTime();
+			assertTrue(exec<=500);
+			}
+			@Test
+			public void NFR2_TestgetReputation(){
+			User user = new User();
+			Timestamp timeS = new Timestamp(System.currentTimeMillis());
+			user.setReputation(-111111);
+			Timestamp timeF = new Timestamp(System.currentTimeMillis());
+			long exec = timeF.getTime()-timeS.getTime();
+			assertTrue(exec<=500);
+			}
+			@Test
+			public void NFR2_TestgetAdmin(){
+			User user = new User();
+			Timestamp timeS = new Timestamp(System.currentTimeMillis());
+			user.setAdmin(true);
+			Timestamp timeF = new Timestamp(System.currentTimeMillis());
+			long exec = timeF.getTime()-timeS.getTime();
+			assertTrue(exec<=500);
+			}
 }

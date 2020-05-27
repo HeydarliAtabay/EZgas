@@ -1,102 +1,181 @@
 # Integration and API Test Documentation
 
-Authors:
+Authors: Atabay Heydarli, Davide Lo Bianco, Gianluca Canitano, Nadir Casciola
 
-Date:
+Date: 26/5/2020
 
-Version:
+Version: 1.0
 
 # Contents
 
-- [Dependency graph](#dependency graph)
+- [Dependency graph](#dependency-graph)
 
-- [Integration approach](#integration)
+- [Integration approach](#integration-approach)
 
 - [Tests](#tests)
 
 - [Scenarios](#scenarios)
 
-- [Coverage of scenarios and FR](#scenario-coverage)
-- [Coverage of non-functional requirements](#nfr-coverage)
+- [Coverage of scenarios and FR](#coverage-of-scenarios-and-fr)
+- [Coverage of non-functional requirements](#coverage-of-non-functional-requirements)
 
 
 
 # Dependency graph 
 
-     <report the here the dependency graph of the classes in it/polito/Ezgas, using plantuml>
+```plantuml
+@startuml
+
+class User
+class GasStation
+
+class UserDto
+class GasStationDto
+class IdPw
+class LoginDto
+
+class UserConverter
+class GasStationConverter
+
+class GasStationRepository
+class UserRepository
+
+class UserController
+class GasStationController
+
+class UserServiceimpl
+class GasStationServiceimpl
+
+UserConverter -down-> User
+UserConverter -down-> UserDto
+
+GasStationConverter -down-> GasStation
+GasStationConverter -down-> GasStationDto
+
+GasStationServiceimpl -down-> GasStationConverter
+GasStationServiceimpl -> GasStation
+GasStationServiceimpl -> GasStationDto
+GasStationServiceimpl -down-> GasStationRepository
+
+UserServiceimpl -down-> UserConverter
+UserServiceimpl -> User
+UserServiceimpl -> UserDto
+UserServiceimpl -down-> UserRepository
+UserServiceimpl -down-> LoginDto
+UserServiceimpl -down-> IdPw
+
+UserController -down-> UserDto
+GasStationController -down-> GasStationDto
+
+@enduml
+```
      
 # Integration approach
 
-    <Write here the integration sequence you adopted, in general terms (top down, bottom up, mixed) and as sequence
-    (ex: step1: class A, step 2: class A+B, step 3: class A+B+C, etc)> 
-    <The last integration step corresponds to API testing at level of Service package>
-    <Tests at level of Controller package will be done later>
+The general approach used is bottom up.
+ 
+ Step 1: 
+ * **GasStation**
+ * **User**
+ * **GasStationDto**
+ * **UserDto**
+ 
+ Step 2:
+   * GasStation + GasStationDto + **GasStationCoverter**
+   * User + UserDto + **UserConverter**
+
+Step 3:
+* GasStation + GasStationDto + GasStationConverter + **GasStationServiceimpl**
+* User + UserDto + UserConverter + **UserServiceimpl**
 
 
 
 #  Tests
 
-   <define below a table for each integration step. For each integration step report the group of classes under test, and the names of
-     JUnit test cases applied to them>
-
 ## Step 1
 | Classes  | JUnit test cases |
 |--|--|
-|||
+|GasStation|TestgetGasStationId1()|
+||TestgetGasStationId2()|
+||TestgetDieselPrice1()|
+||TestgetDieselPrice2()|
+||TestgetDieselPrice3()|
+||TestgetDieselPrice4()|
+||TestsetGasPrice1()|
+||TestsetGasPrice2()|
+||TestsetGasPrice3()|
+||TestsetGasPrice4()|
+||TestsetGasPrice5()|
+|User|TestgetUserId1()|
+||TestgetUserId2()|
+||TestgetReputation1()|
+||TestgetReputation2()|
+||TestgetAdmin1()|
+||TestgetAdmin2()|
 
 
 ## Step 2
 | Classes  | JUnit test cases |
 |--|--|
-|||
+|User + UserDto + UserConverter|adminUserToDtoTest()|
+||normalUserToDtoTest()|
+||adminUserDtoToUserTest()|
+||normalUserDtoToUserTest()|
+|GasStation + GasStationDto + GasStationCoverter|gasStationToDtoTest()|
+||dtoToGasStationTest()|
 
 
-## Step n API Tests
-
-   <The last integration step  should correspond to API testing, or tests applied to all classes implementing the APIs defined in the Service package>
+## Step 3 API Tests
 
 | Classes  | JUnit test cases |
 |--|--|
-|||
+|User + UserDto + UserConverter + UserServiceimpl|getUserByIdExceptionTest()|
+||getUserByIdNullTest()|
+||getUserByIdTest()|
+||getAllUsersTest()|
+||getAllUsersEmptyTest()|
+||deleteUserExceptionTest()|
+||deleteUserTest()|
+||deleteNonExistingUserTest()|
+||loginSuccessfulTest()|
+||loginWrongPwdTest()|
+||loginWrongEmailTest()|
+||increaseReputationTest()|
+||increaseReputationMaximumTest()|
+||decreaseReputationTest()|
+||decreaseReputationMinimumTest()|
+|GasStation + GasStationDto + GasStationConverter + GasStationServiceimpl|getGasStationByGasolineTypeTest1(),getGasStationByGasolineTypeTest2()|
+||GasStationInvalidLatTest()|
+||GasStationInvalidLonTest()|
+||getGasStationByProximityTest()|
+||getGasStationWithoutCoordinatesTest()|
+||getGasStationWithoutCoordinatesTest1()|
+||getGasStationsWithCoordinatesTest2()|
+||getGasStationsWithCoordinatesTest3()|
+||setReportTest1(),setReportTest2()|
+||getGasStationByIdNullTest()|
+||getGasStationByIdExceptionTest()|
+||getAllGasStationsEmptyTest()|
+||getAllGasStationsTest()|
+||getCarSharingTest()|
+||saveGasStationTest1()|
+||getGasStationByIdTest()|
+||deleteGasStationTest()|
 
-
-
-
-# Scenarios
-
-
-<If needed, define here additional scenarios for the application. Scenarios should be named
- referring the UC they detail>
-
-## Scenario UCx.y
-
-| Scenario |  name |
-| ------------- |:-------------:| 
-|  Precondition     |  |
-|  Post condition     |   |
-| Step#        | Description  |
-|  1     |  ... |  
-|  2     |  ... |
 
 
 
 # Coverage of Scenarios and FR
 
 
-<Report in the following table the coverage of  scenarios (from official requirements and from above) vs FR. 
-Report also for each of the scenarios the (one or more) API JUnit tests that cover it. >
-
-
-
-
 | Scenario ID | Functional Requirements covered | JUnit  Test(s) | 
 | ----------- | ------------------------------- | ----------- | 
-|  ..         | FRx                             |             |             
-|  ..         | FRy                             |             |             
-| ...         |                                 |             |             
-| ...         |                                 |             |             
-| ...         |                                 |             |             
-| ...         |                                 |             |             
+|  10.1         | FR5.3, FR1.4, FR1.1                             |   getGasStationByIdTest()          |
+|          |                                 |    getUserByIdTest()         |
+|          |                                 |      increaseReputationTest()       |             
+|  10.2        | FR5.3, FR1.4, FR1.1                             |     getGasStationByIdTest()        |             
+|          |                                 |       getUserByIdTest()      |             
+|         |                                 |          decreaseReputationTest()   |             
 
 
 
@@ -110,6 +189,10 @@ Report also for each of the scenarios the (one or more) API JUnit tests that cov
 
 | Non Functional Requirement | Test name |
 | -------------------------- | --------- |
-|                            |           |
+| NFR2-Performance           | EZGasApplicationTests.java- NFR2_TestgetGasStationId();NFR2_TestgetDieselPrice();NFR2_TestsetGasPrice();NFR2_TestgetUserId();NFR2_TestgetReputation();NFR2_TestgetAdmin()          |
+|                            | UserServiceimplTests.java -  testNFRListUsers();testNFRAddModifyUser();testNFRPermissions()           |
+|                            | GasStationConverterTests.java - NFR2_gasStationToDtoTest();NFR2_DtotogasStationTest()         |
+|                            | UserConverterTests.java - NFR2_normalUserDtoToUserTest();NFR2_adminUserDtoToUserTest();NFR2_normalUserToDtoTest();NFR2_adminUserToDtoTest()           |
+|                            | GasStationServiceimplTest.java - testNFRAddModifyStation();testNFRListGasStations();testNFRSearchGasStation();testNFRSearchGasStation2();testNFRAddReport();testNFREvaluateReport()          |
 
 

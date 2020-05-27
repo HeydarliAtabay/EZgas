@@ -6,7 +6,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import exception.GPSDataException;
@@ -27,8 +26,11 @@ import it.polito.ezgas.service.GasStationService;
 public class GasStationServiceimpl implements GasStationService {
 	
 	//instance of the GasStationRepository
-	@Autowired
 	private GasStationRepository repo;
+	
+	public GasStationServiceimpl(GasStationRepository gsrepo) {
+		this.repo = gsrepo;
+	}
 
 	@Override
 	public GasStationDto getGasStationById(Integer gasStationId) throws InvalidGasStationException {
