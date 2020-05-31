@@ -163,9 +163,40 @@ Step 3:
 ||deleteGasStationTest()|
 
 
-
+# Scenarios\
+\
+## Scenario UC1.1\
+\
+| Scenario | A user without an account creates an account |\
+| ------------- |:-------------:| \
+|  Precondition     | Account U doesn't exist |\
+|  Post condition   | Account U is created  |\
+| Step#        | Description  |\
+|  1     |  The user fills all the necessary elements for creating the new account |  \
+|  2     |  The system checks whether all the necessary elements are filled, and if everthing is okay, the new account is created |\
+\
+## Scenario UC1.2\
+\
+| Scenario | A user tries to create a secondary account |\
+| ------------- |:-------------:| \
+|  Precondition     | Account U already exists |\
+|  Post condition     | - |\
+| Step#        | Description  |\
+|  1     |  The user which already has an acoount with email and attempts to create another one using the same email |  \
+|  2     |  The second attempt is declined by the system |\
+\
+## Scenario UC1.3\
+\
+| Scenario | Administrator account is created |\
+| ------------- |:-------------:| \
+|  Precondition     | Administrator account A may or may not exist |\
+|  Post condition   | A new administrator account is created |\
+| Step#  | Description  |\
+|  1     |  The necessary fields of an account are filled, and if the rules comply, the account is created |  \
+\
 
 # Coverage of Scenarios and FR
+
 
 
 | Scenario ID | Functional Requirements covered | JUnit  Test(s) | 
