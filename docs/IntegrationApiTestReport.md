@@ -203,6 +203,16 @@ Step 3:
 | Step# | Description  |
 | 1     |  Administrator changes the password of User1 and User 2 |
 | 2     |  The new passwords are verified by the system and the accounts are modified |
+
+## Scenario UC3.1
+| Scenario | An user tries to delete his/her account |
+| ------------- |:-------------:| 
+|  Precondition     | Account U already exists |
+|  Post condition   |  Account U is deleted |
+| Step# | Description  |
+|  1    |  The user deletes his/her account |  
+
+
 # Coverage of Scenarios and FR
 
 
