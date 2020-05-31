@@ -177,24 +177,32 @@ Step 3:
 
 ## Scenario UC1.2
 
-| Scenario | A user tries to create a secondary account|
+| Scenario | Administrator try to create accounts with the same email address |
+| ------------- |:-------------:| 
+|  Precondition     | Account with email X exist |
+|  Post condition   | Second account with the same email is created |
+| Step#  | Description  |
+|  1     |  Administrator fills the fields for the new user with the existing email, and the new account is created |  
+
+## Scenario UC2.1
+
+| Scenario | A user tries to modify his/her account |
 | ------------- |:-------------:| 
 |  Precondition     | Account U already exists |
-|  Post condition     | - |
-| Step#        | Description  |
-|  1     |  The user which already has an acoount with email and attempts to create another one using the same email | 
-|  2     |  The second attempt is declined by the system |
+|  Post condition   |  U is modified |
+| Step# | Description  |
+| 1     |  Existing user changes the password of his/her account and add new one |
+| 2     |  The new password is verified by the system and the account is modified |
 
-## Scenario UC1.3
+## Scenario UC2.2
 
-| Scenario | Administrator account is created |
+| Scenario | Administrator tries to modify different accounts |
 | ------------- |:-------------:| 
-|  Precondition     | Administrator account A may or may not exist |
-|  Post condition   | A new administrator account is created |
-| Step#  | Description  |
-|  1     |  The necessary fields of an account are filled, and if the rules comply, the account is created |  
-
-
+|  Precondition     | Account U1 and U2 already exist |
+|  Post condition   |  U1 and U2 are modified |
+| Step# | Description  |
+| 1     |  Administrator changes the password of User1 and User 2 |
+| 2     |  The new passwords are verified by the system and the accounts are modified |
 # Coverage of Scenarios and FR
 
 
