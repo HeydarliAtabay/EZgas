@@ -205,12 +205,12 @@ Step 3:
 | 2     |  The new passwords are verified by the system and the accounts are modified |
 
 ## Scenario UC3.1
-| Scenario | An user tries to delete his/her account |
+| Scenario | Administrator tries to delete two accounts |
 | ------------- |:-------------:| 
-|  Precondition     | Account U already exists |
-|  Post condition   |  Account U is deleted |
+|  Precondition     | Account U1 and U2 already exist |
+|  Post condition   |  Account U1 and U2 are deleted |
 | Step# | Description  |
-|  1    |  The user deletes his/her account |  
+|  1    |  Administrator deletes U1 and U2 |  
 
 ## Scenario UC4.1
 
