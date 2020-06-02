@@ -64,8 +64,8 @@ UserServiceimpl -down-> UserRepository
 UserServiceimpl -down-> LoginDto
 UserServiceimpl -down-> IdPw
 
-UserController -down-> UserDto
-GasStationController -down-> GasStationDto
+UserController -down-> UserServiceimpl
+GasStationController -down-> GasStationServiceimpl
 
 @enduml
 ```
