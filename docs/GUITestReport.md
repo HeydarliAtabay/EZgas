@@ -28,7 +28,7 @@ This part of the document reports about testing at the GUI level. Tests are end 
 | UC8.1  | FR3.3, FR4, FR4.1, FR4.2, FR4.3, FR4.4, FR4.5 |GUITests.GUI_UC8.1.sikuli.GUI_UC8.1.py| 
 | UC8.2  | FR3.3, FR4, FR4.1, FR4.2, FR4.3, FR4.4, FR4.5 |GUITests.GUI_UC8.2.sikuli.GUI_UC8.2.py| 
 | UC8.3  | FR3.3, FR4, FR4.1, FR4.2, FR4.3, FR4.4, FR4.5 |GUITests.GUI_UC8.3.sikuli.GUI_UC8.3.py|
-| UC9.1  | FR5.2 | GUITests.GUI_UC9.1.sikuli.GUI_UC9.1.py |
+| UC9.1  | FR5.2 | |
 | UC10.1 | FR5.3 | |
 | UC10.2 | FR5.3 |  |       
 
