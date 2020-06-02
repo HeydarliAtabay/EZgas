@@ -1,12 +1,16 @@
 package it.polito.ezgas.service.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import exception.GPSDataException;
 import exception.InvalidGasStationException;
@@ -27,6 +31,9 @@ public class GasStationServiceimpl implements GasStationService {
 	
 	//instance of the GasStationRepository
 	private GasStationRepository repo;
+	
+	@Autowired
+	private UserServiceimpl userService;
 	
 	public GasStationServiceimpl(GasStationRepository gsrepo) {
 		this.repo = gsrepo;
@@ -373,6 +380,14 @@ public class GasStationServiceimpl implements GasStationService {
 		
 		gs.setReportUser(userId);
 		
+		Integer userRep = 0;
+		if (this.userService.getUserById(userId) != null) {
+			userRep = this.userService.getUserById(userId).getReputation();
+		}
+		
+		String timestamp = new SimpleDateFormat("yyyy/MM/dd-HH:mm:ss").format(new Date());
+		gs.setReportDependability(this.calculateDependability(userRep, timestamp));
+		
 		if(gs.getHasDiesel()) {
 			if(dieselPrice < 0) {
 				throw new PriceException("Error: price for diesel is negative");
@@ -415,6 +430,30 @@ public class GasStationServiceimpl implements GasStationService {
 		} catch (GPSDataException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private double calculateDependability(Integer userTrust, String reportTimestamp){
+		double obs = 0;
+		
+		SimpleDateFormat dateF = new SimpleDateFormat("yyyy/MM/dd-HH:mm:ss");
+		Date parsedDate;
+		try {
+			parsedDate = dateF.parse(reportTimestamp);
+			long reportTSMillis = parsedDate.getTime();
+			long nowMillis = System.currentTimeMillis();
+			
+			if (nowMillis - reportTSMillis > 7*24*3600*1000) {
+				obs = 0;
+			}
+			else {
+				obs = 1 - ( (nowMillis - reportTSMillis)/(1000*3600*24) )/7;
+			}
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		return 50 * (userTrust + 5)/10 + 50 * obs;
 	}
 
 	@Override
