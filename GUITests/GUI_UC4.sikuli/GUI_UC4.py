@@ -21,7 +21,7 @@ wait(1.5)
 for n in range(3):
     if exists("1591048903903.png"):
         type("1591043972046.png","Shell")
-        type("1591044006208.png","Via Garibaldi")
+        type("1591044006208.png","Via Pietro Cossa")
         wait(2)
         mouseMove(0,25)
         click(Mouse.at())
@@ -30,10 +30,10 @@ for n in range(3):
         click("1591044101982.png")
         for b in range(2):
             if exists("1591048942418.png"):
-                for a in range (3): 
+                for a in range (4): 
                     click("1591044143359.png")
             else: 
-                wheel(WHEEL_DOWN,2)
+                wheel(WHEEL_DOWN,3)
         click("1591044172260.png")    
         break
     else:
