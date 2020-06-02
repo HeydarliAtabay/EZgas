@@ -324,7 +324,22 @@ Step 3:
 
 | Scenario ID | Functional Requirements covered | JUnit  Test(s) | 
 | ----------- | ------------------------------- | ----------- | 
-|  10.1         | FR5.3, FR1.4, FR1.1                             |   getGasStationByIdTest()          |
+| UC1.1  | FR1, FR1.1  | |
+| UC1.2  | FR1, FR1.1  |  | 
+| UC2.1  | FR1, FR1.1  |  | 
+| UC2.2  | FR1, FR1.1  |  |
+| UC3  | FR1.2       | |             
+| UC4  | FR3, FR3.1  | |
+| UC5  | FR3.1       | |             
+| UC6  | FR3, FR3.2, FR3.3, FR4 | | 
+| UC7  | FR5, FR5.1  | |
+| UC8.1  | FR3.3, FR4, FR4.1, FR4.2, FR4.3, FR4.4, FR4.5 || 
+| UC8.2  | FR3.3, FR4, FR4.1, FR4.2, FR4.3, FR4.4, FR4.5 || 
+| UC8.3  | FR3.3, FR4, FR4.1, FR4.2, FR4.3, FR4.4, FR4.5 ||
+| UC9.1  | FR5.2 | |
+| UC10.1 | FR5.3, FR1.4, FR1.1| |
+| UC10.2 | | FR5.3, FR1.4, FR1.1 |  | 
+|  10.1     | FR5.3, FR1.4, FR1.1                             |   getGasStationByIdTest()          |
 |          |                                 |    getUserByIdTest()         |
 |          |                                 |      increaseReputationTest()       |             
 |  10.2        | FR5.3, FR1.4, FR1.1                             |     getGasStationByIdTest()        |             
