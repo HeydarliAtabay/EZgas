@@ -204,7 +204,7 @@ Step 3:
 | 1     |  Administrator changes the password of User1 and User 2 |
 | 2     |  The new passwords are verified by the system and the accounts are modified |
 
-## Scenario UC3.1
+## Scenario UC3
 | Scenario | Administrator tries to delete two accounts |
 | ------------- |:-------------:| 
 |  Precondition     | Account U1 and U2 already exist |
@@ -212,7 +212,7 @@ Step 3:
 | Step# | Description  |
 |  1    |  Administrator deletes U1 and U2 |  
 
-## Scenario UC4.1
+## Scenario UC4
 
 | Scenario | The administrator creates a new gas station G |
 | ------------- |:-------------:| 
@@ -223,7 +223,7 @@ Step 3:
 |  2     | The application assigns a unique ID to the gas station |
 |  3     | If the inputs comply with the rules, the gas station G is successfully created |
 
-## Scenario UC5.1
+## Scenario UC5
 
 | Scenario | The administrator modifies the gas station G |
 | ------------- |:-------------:| 
@@ -233,7 +233,7 @@ Step 3:
 |  1     | The administrator selects from the list a gas station to modify |
 |  2     | The properties of the station are shown to the administrator, and they are modified by the administrator |
 
-## Scenario UC6.1
+## Scenario UC6
 
 | Scenario | The administrator deletes a gas station |
 | ------------- |:-------------:| 
@@ -242,7 +242,7 @@ Step 3:
 | Step#  | Description  |
 |  1     | The administrator selects a gas station, that he wants to delete and delete it |  
 
-## Scenario UC7.1
+## Scenario UC7
 
 | Scenario | A user wants to insert a price report to a gas station |
 | ------------- |:-------------:| 
@@ -283,7 +283,7 @@ Step 3:
 |  1     |  The search results are filtered to show only the certain car sharing company the user selected|  
 
 
-## Scenario UC9.1
+## Scenario UC9
 
 | Scenario | The trust level of a price list is updated every time a user does a search |
 | ------------- |:-------------:| 
@@ -292,7 +292,7 @@ Step 3:
 | Step#  | Description  |
 |  1     | The system uses the reputation of the user who added the price report list to compute the trust level of the price report (done every time a user does a search) |
 
-##### Scenario 10.1 
+## Scenario 10.1 
 
 | Scenario |  price is correct |
 | ------------- |:-------------:| 
@@ -305,7 +305,7 @@ Step 3:
 |  3    |  System searches the user U2 who did signal the prices for G|
 |  4    |  System increases by 1 the trust level of U2 |
 
-##### Scenario 10.2 
+## Scenario 10.2 
 | Scenario |  price is wrong |
 | ------------- |:-------------:| 
 |  Precondition     | User U exists and has valid account |
