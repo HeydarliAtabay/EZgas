@@ -12,21 +12,25 @@ This part of the document reports about testing at the GUI level. Tests are end 
 
 ## Coverage of Scenarios and FR
 
-```
-<Complete this table (from IntegrationApiTestReport.md) with the column on the right. In the GUI Test column, report the name of the .py  file with the test case you created.>
-```
-
 ### 
 
 | Scenario ID | Functional Requirements covered | GUI Test(s) |
 | ----------- | ------------------------------- | ----------- | 
-| 1           | FRx                             |             |             
-| 2           | FRy                             |             |             
-| ...         |                                 |             |         
-| ...         |                                 |             |             
-| ...         |                                 |             |             
-| ...         |                                 |             |             
-
+| UC1.1  | FR1, FR1.1  | GUITests.GUI_UC1.1.sikuli.GUI_UC1.1.py |
+| UC1.2  | FR1, FR1.1  | GUITests.GUI_UC1.2.sikuli.GUI_UC1.2.py | 
+| UC2.1  | FR1, FR1.1  | GUITests.GUI_UC2.1.sikuli.GUI_UC2.1.py | 
+| UC2.2  | FR1, FR1.1  | GUITests.GUI_UC2.2.sikuli.GUI_UC2.2.py |
+| UC3  | FR1.2       | GUITests.GUI_UC3.sikuli.GUI_UC3.py  |             
+| UC4  | FR3, FR3.1  | GUITests.GUI_UC4.sikuli.GUI_UC4.py |
+| UC5  | FR3.1       | GUITests.GUI_UC5.sikuli.GUI_UC5.py |             
+| UC6  | FR3, FR3.2, FR3.3, FR4 |GUITests.GUI_UC6.sikuli.GUI_UC6.py | 
+| UC7  | FR5, FR5.1  | GUITests.GUI_UC7.sikuli.GUI_UC7.py|
+| UC8.1  | FR3.3, FR4, FR4.1, FR4.2, FR4.3, FR4.4, FR4.5 |GUITests.GUI_UC8.1.sikuli.GUI_UC8.1.py| 
+| UC8.2  | FR3.3, FR4, FR4.1, FR4.2, FR4.3, FR4.4, FR4.5 |GUITests.GUI_UC8.2.sikuli.GUI_UC8.2.py| 
+| UC8.3  | FR3.3, FR4, FR4.1, FR4.2, FR4.3, FR4.4, FR4.5 |GUITests.GUI_UC8.3.sikuli.GUI_UC8.3.py|
+| UC9.1  | FR5.2 | GUITests.GUI_UC9.1.sikuli.GUI_UC9.1.py |
+| UC10.1 | FR5.3 | |
+| UC10.2 | FR5.3 |  |       
 
 # REST  API  Testing
 
