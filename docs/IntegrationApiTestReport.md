@@ -285,12 +285,12 @@ Step 3:
 
 ## Scenario UC9
 
-| Scenario | The trust level of a price list is updated every time a user does a search |
+| Scenario | The trust level of a price list is updated when a user does the report |
 | ------------- |:-------------:| 
 | Precondition     | User U exists |
-| Post condition   | The trust level of the the price list is updated |
+| Post condition   | The trust level of the the price list is updated, based on given formula  |
 | Step#  | Description  |
-|  1     | The system uses the reputation of the user who added the price report list to compute the trust level of the price report (done every time a user does a search) |
+|  1     | The system uses the reputation of the user who added the price report list to compute the trust level of the price report  |
 
 ## Scenario 10.1 
 
