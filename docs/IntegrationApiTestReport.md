@@ -2,9 +2,9 @@
 
 Authors: Atabay Heydarli, Davide Lo Bianco, Gianluca Canitano, Nadir Casciola
 
-Date: 26/5/2020
+Date: 02/6/2020
 
-Version: 1.0
+Version: 2.0
 
 # Contents
 
