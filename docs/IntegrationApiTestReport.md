@@ -330,7 +330,7 @@ Step 3:
 | UC3  | FR1.2       | deleteUserTest()|             
 | UC4  | FR3, FR3.1  | saveGasStationTest1() |
 | UC5  | FR3.1       | saveGasStationTest1() |             
-| UC6  | FR3, FR3.2, FR3.3, FR4 | deleteGasStation() | 
+| UC6  | FR3, FR3.2, FR3.3, FR4 | deleteGasStationTest() | 
 | UC7  | FR5, FR5.1  | setReportTest2() |
 | UC8.1  | FR3.3, FR4, FR4.1, FR4.2, FR4.3, FR4.4, FR4.5 |getGasStationsWithCoordinatesTest1()| 
 | UC8.2  | FR3.3, FR4, FR4.1, FR4.2, FR4.3, FR4.4, FR4.5 |getGasStationsWithCoordinatesTest1()| 
