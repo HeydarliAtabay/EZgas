@@ -336,8 +336,6 @@ Step 3:
 | UC8.2  | FR3.3, FR4, FR4.1, FR4.2, FR4.3, FR4.4, FR4.5 |getGasStationsWithCoordinatesTest1()| 
 | UC8.3  | FR3.3, FR4, FR4.1, FR4.2, FR4.3, FR4.4, FR4.5 |getGasStationsWithCoordinatesTest1()|
 | UC9.1  | FR5.2 | |
-| UC10.1 | FR5.3, FR1.4, FR1.1| |
-| UC10.2 | | FR5.3, FR1.4, FR1.1 |  | 
 |  10.1     | FR5.3, FR1.4, FR1.1                             |   getGasStationByIdTest()          |
 |          |                                 |    getUserByIdTest()         |
 |          |                                 |      increaseReputationTest()       |             
