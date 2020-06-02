@@ -1,0 +1,36 @@
+#opening the browser Google Chrome 
+chrome = r"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"
+App.open(chrome)
+#new tab in chrome
+keyDown(Key.CTRL)
+type("t")
+keyUp(Key.CTRL)
+
+#type the link for the EZGas application
+type("1590918261382-1.png","http://localhost:8080/")
+type(Key.ENTER)
+wait(1.5)
+
+# login as Admin
+click("1590920825446.png")
+wait(1.5)
+type("1590929404313.png","admin@ezgas.com")
+type("1590929529701.png","admin")
+click("1590929576884.png")
+wait(1.5)
+click("1590929624093.png")
+wait(1.5)
+
+#add user with email X
+type("1590929711047.png","Atabay1")
+type("1590929742871.png","123")
+type("1590929786563.png","s277000@studenti.polito.it")
+click("1590929834251.png")
+wait(1)
+
+# add second user with the same email
+type("1590929711047.png","Atabay2")
+type("1590929742871.png","1234")
+type("1590929786563.png","s277000@studenti.polito.it")
+click("1590929834251.png")
+wait(1.5)
