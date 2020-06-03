@@ -8,6 +8,6 @@ List below the most likely risks>
 ###
 
 |  Risk type (technical, project, business) | Risk description | Probability (high, medium, low) | Impact (high medium low)|
-| ------ | ------ | ---------- | --------------- | ---------- |
-| | | | | | 
+| ------ | ------ | ---------- | --------------- | 
+| | | | | |
 
