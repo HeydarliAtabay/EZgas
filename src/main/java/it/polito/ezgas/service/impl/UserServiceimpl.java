@@ -52,8 +52,8 @@ public class UserServiceimpl implements UserService {
 		
 		//converts to User and saves it
 		User u = conv.convertFromDto(userDto);
-		repo.save(u);
-		return conv.convert(u);
+		User savedU = repo.save(u);
+		return conv.convert(savedU);
 	}
 
 	@Override

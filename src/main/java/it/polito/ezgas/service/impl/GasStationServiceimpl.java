@@ -62,6 +62,7 @@ public class GasStationServiceimpl implements GasStationService {
 	public GasStationDto saveGasStation(GasStationDto gasStationDto) throws PriceException, GPSDataException {
 		double d = -1.0;
 		
+		
 		//if the prices are -1, set a default value for the price
 		if (gasStationDto.getHasDiesel()) {
 			if( Math.abs(gasStationDto.getDieselPrice() - d) < 0.0000001) {
@@ -92,6 +93,7 @@ public class GasStationServiceimpl implements GasStationService {
 				gasStationDto.setMethanePrice(1.1);
 			}
 		}
+		
 		
 		//throws priceException if prices are negative
 		if (gasStationDto.getHasDiesel()) {
@@ -135,9 +137,10 @@ public class GasStationServiceimpl implements GasStationService {
 		}
 		
 		GasStationConverter conv = new GasStationConverter();
-		repo.save(conv.convertFromDto(gasStationDto));
 		
-		return gasStationDto;
+		GasStation savedGs = repo.save(conv.convertFromDto(gasStationDto));
+		
+		return conv.convert(savedGs);
 	}
 
 	@Override
