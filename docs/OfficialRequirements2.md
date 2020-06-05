@@ -6,6 +6,7 @@ Date: 5 june 2020
 
 Version: 2.0  
 List of changes
+
 | | |
 |--|---|
 |Issue12 | Added unit of measure for geo coordinates| 
