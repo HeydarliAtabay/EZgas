@@ -4,7 +4,14 @@ Authors: Riccardo Coppola, Luca Ardito, Maurizio Morisio
 
 Date: 5 june 2020
 
-Version: 2.0   Fixed .. Added CR7
+Version: 2.0  
+List of changes
+| | |
+|--|---|
+|Issue12 | Added unit of measure for geo coordinates| 
+| CR4 | Added |
+| CR7 | Added |
+
 
 # Contents
 
@@ -135,6 +142,7 @@ Emma is 35 and she has always had a lifelong passion for sport cars. She owns tw
 |  NFR3     | Portability | The application should be accessed by Chrome (version 81 and more recent), and Safari (version 13 and more recent) (this covers around 80% of installed browsers); and from the operating systems where these browsers are available (Android, IoS, Windows, MacOS, Unix). As for devices, the application should be usable on smartphones (portrait) and PCs (landscape). | All FR |
 |  NFR4     |                     Privacy                     | The data of one user should not be disclosed to other users. The identity of the user who signaled or assessed a price report should not be visible to other users. | All FR |
 |  NFR5     | Localisation | Decimal numbers use . (dot) as decimal separator |All FR|
+| NFR6      | Localisation | Unit of measure for geo coordinates is degrees, longitude range [-180 + 180[   latitude [-90 +90[   | All FR, notably FR4|
 
 
 
