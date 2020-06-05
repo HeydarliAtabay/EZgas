@@ -11,7 +11,7 @@ List of changes
 |--|---|
 |Issue12 | Added unit of measure for geo coordinates as NFR6| 
 |Issue26 | |
-|Issue33 or CR4 | Modified UC7, added scenario  |
+|Issue33 or CR4 | Modified UC7  |
 
 
 
@@ -257,9 +257,9 @@ a --> (Manage gas station)
 | Nominal Scenario | The user U selects a gas station G for which he/she wants to insert a price report; no price list is attached to G;
                      the system prompts the user with the list of possible fuels provided by the gas station; 
                          the user inserts the prices for the fuels; the price list is attached to G |
-| Variants         |         a price list is already  attached to G, previously inserted by U2, 
+| Variants         |         a price list is already  attached to G, previously inserted by U2, <br>
                            U.trust_level >= U2.trust_level, the previous price list is overwritten                  |
-| |   a price list is already  attached to G, previously inserted by U2, 
+| |   a price list is already  attached to G, previously inserted by U2, <br>
                            U.trust_level < U2.trust_level, the previous price list is overwritten only if (today - P.time_tag ) > 4 days      |
 
 
