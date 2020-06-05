@@ -10,7 +10,6 @@ List of changes
 | | |
 |--|---|
 |Issue12 | Added unit of measure for geo coordinates as NFR6| 
-|Issue26 | |
 |Issue33 or CR4 | Modified UC7  |
 
 
