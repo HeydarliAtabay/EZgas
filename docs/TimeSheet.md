@@ -14,8 +14,8 @@ These figures will not be used to evaluate neither the project nor the team
 | may 4 - 10 | | |10 hours |6 hours | | | |2 hours| 
 | may 11 - 17| | |4 hours |4 hours | | | 1 hour|2 hours | 
 | may 18 - 24| | | | 3 hours|9 hours | | | 3 hours | 
-| may 25 - 31| |3 hours | | |12 hours | |3 hours | 2 hours| 
-| jun 1 -  7 | | | | | |4 hours | | 1 hour| 
+| may 25 - 31| |3 hours | | |12 hours | |2 hours | 2 hours| 
+| jun 1 -  7 | | | | | |4 hours | 1 hour | 1 hour| 
 | jun 8 - 14 | | | | | | | | | 
 | jun 15 -21 | | | | | | | | | 
 | jun 22 -28 | | | | | | | | | 
