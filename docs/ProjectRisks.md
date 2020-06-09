@@ -12,5 +12,6 @@
 |Technical| Filled all capacity of the database |low |medium | 
 |Project | After gained success of EZGas application, the team members are not enough for maintaining the application |low |medium | 
 |Technical | The price report system of the product doesn't works properly and some prices are not reliable | low | medium | 
+|Technical | The updating have a compatibility problem with the Operating System used by the user |low |low|
 | Technical| The requirements of created application doesn't meet all needs of the end users |low |low | 
 
