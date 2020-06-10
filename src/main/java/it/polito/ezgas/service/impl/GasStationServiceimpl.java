@@ -62,6 +62,7 @@ public class GasStationServiceimpl implements GasStationService {
 	public GasStationDto saveGasStation(GasStationDto gasStationDto) throws PriceException, GPSDataException {
 		double d = -1.0;
 		
+		
 		//if the prices are -1, set a default value for the price
 		if (gasStationDto.getHasDiesel()) {
 			if( Math.abs(gasStationDto.getDieselPrice() - d) < 0.0000001) {
@@ -92,6 +93,7 @@ public class GasStationServiceimpl implements GasStationService {
 				gasStationDto.setMethanePrice(1.1);
 			}
 		}
+		
 		
 		//throws priceException if prices are negative
 		if (gasStationDto.getHasDiesel()) {
@@ -135,9 +137,14 @@ public class GasStationServiceimpl implements GasStationService {
 		}
 		
 		GasStationConverter conv = new GasStationConverter();
-		repo.save(conv.convertFromDto(gasStationDto));
 		
-		return gasStationDto;
+		if (gasStationDto.getCarSharing().equals("null")) {
+			gasStationDto.setCarSharing(null);
+		}
+		
+		GasStation savedGs = repo.save(conv.convertFromDto(gasStationDto));
+		
+		return conv.convert(savedGs);
 	}
 
 	@Override
@@ -169,7 +176,7 @@ public class GasStationServiceimpl implements GasStationService {
 
 	@Override
 	public List<GasStationDto> getGasStationsByGasolineType(String gasolinetype) throws InvalidGasTypeException {
-		if (gasolinetype == null || gasolinetype == "") {
+		if (gasolinetype == null || gasolinetype.equalsIgnoreCase("")) {
 			throw new InvalidGasTypeException("Error: no gasoline type provided (null or empty string)");
 		}
 		
@@ -203,6 +210,9 @@ public class GasStationServiceimpl implements GasStationService {
 				if(gs.getHasMethane()) {
 					res.add(conv.convert(gs));
 				}
+			}
+			else { //if gasolinetype provided does not match any known gasollinetype it throws the exception 
+				throw new InvalidGasTypeException("Error: gasolinetype provided does not match any known gasollinetype");
 			}
 		}
 		
@@ -315,7 +325,7 @@ public class GasStationServiceimpl implements GasStationService {
 	//true if gasStation is in gsList, false otherwise
 	private Boolean gasStationIsInList(GasStationDto gasStation, List<GasStationDto> gsList) {
 		for (GasStationDto gs : gsList) {
-			if (gasStation.getGasStationId() == gs.getGasStationId()) {
+			if (gasStation.getGasStationId().intValue() == gs.getGasStationId().intValue()) {
 				return true;
 			}
 		}
@@ -383,10 +393,12 @@ public class GasStationServiceimpl implements GasStationService {
 		Integer userRep = 0;
 		if (this.userService.getUserById(userId) != null) {
 			userRep = this.userService.getUserById(userId).getReputation();
+			gs.setUserDto(this.userService.getUserById(userId));
 		}
 		
-		String timestamp = new SimpleDateFormat("yyyy/MM/dd-HH:mm:ss").format(new Date());
+		String timestamp = new SimpleDateFormat("MM-dd-YYYY").format(new Date());
 		gs.setReportDependability(this.calculateDependability(userRep, timestamp));
+		gs.setReportTimestamp(timestamp);
 		
 		if(gs.getHasDiesel()) {
 			if(dieselPrice < 0) {
@@ -435,7 +447,7 @@ public class GasStationServiceimpl implements GasStationService {
 	private double calculateDependability(Integer userTrust, String reportTimestamp){
 		double obs = 0;
 		
-		SimpleDateFormat dateF = new SimpleDateFormat("yyyy/MM/dd-HH:mm:ss");
+		SimpleDateFormat dateF = new SimpleDateFormat("MM-dd-YYYY");
 		Date parsedDate;
 		try {
 			parsedDate = dateF.parse(reportTimestamp);

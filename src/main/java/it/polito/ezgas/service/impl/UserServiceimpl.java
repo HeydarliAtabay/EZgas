@@ -52,8 +52,8 @@ public class UserServiceimpl implements UserService {
 		
 		//converts to User and saves it
 		User u = conv.convertFromDto(userDto);
-		repo.save(u);
-		return conv.convert(u);
+		User savedU = repo.save(u);
+		return conv.convert(savedU);
 	}
 
 	@Override
@@ -75,15 +75,12 @@ public class UserServiceimpl implements UserService {
 			throw new InvalidUserException("Error: invalid (negative) user id");
 	    }
 		
-		//gets all users and if it finds the one with the provided id it deletes it
-		for (UserDto uDto : this.getAllUsers()) {
-			if (uDto.getUserId() == userId) {
-				repo.delete(userId);
-				return true;
-			}
+		if (this.getUserById(userId) == null) {
+			return false;
 		}
 		
-		return false;
+		repo.delete(userId);
+		return true;
 	}
 
 	@Override
@@ -142,7 +139,7 @@ public class UserServiceimpl implements UserService {
 		}
 		
 		Integer rep = u.getReputation();
-		if (rep == -5) {
+		if (rep.intValue() == -5) {
 			return rep;
 		}
 		rep = rep - 1;
