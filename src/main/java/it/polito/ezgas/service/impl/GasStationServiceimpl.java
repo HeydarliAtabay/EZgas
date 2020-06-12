@@ -250,6 +250,9 @@ public class GasStationServiceimpl implements GasStationService {
 		else if (gasolinetype.equalsIgnoreCase("Premium Diesel")) {
 			Collections.sort(res, Comparator.comparingDouble(GasStationDto::getPremiumDieselPrice));
 		}
+		else { //if gasolinetype provided does not match any known gasollinetype it throws the exception 
+			throw new InvalidGasTypeException("Error: gasolinetype provided does not match any known gasollinetype");
+		}
 		
 		return res;
 	}
