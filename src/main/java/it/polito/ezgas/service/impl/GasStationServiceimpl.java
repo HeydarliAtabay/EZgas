@@ -60,37 +60,40 @@ public class GasStationServiceimpl implements GasStationService {
 
 	@Override
 	public GasStationDto saveGasStation(GasStationDto gasStationDto) throws PriceException, GPSDataException {
-		double d = -1.0;
-		
-		
-		//if the prices are -1, set a default value for the price
+		//if the prices are null, set a default value for the price
 		if (gasStationDto.getHasDiesel()) {
-			if( Math.abs(gasStationDto.getDieselPrice() - d) < 0.0000001) {
+			if( gasStationDto.getDieselPrice() == null) {
 				gasStationDto.setDieselPrice(1.2);
 			}
 		}
 		
 		if (gasStationDto.getHasSuper()) {
-			if( Math.abs(gasStationDto.getSuperPrice() - d) < 0.0000001) {
+			if( gasStationDto.getSuperPrice() == null) {
 				gasStationDto.setSuperPrice(1.2);
 			}
 		}
 		
 		if (gasStationDto.getHasSuperPlus()) {
-			if( Math.abs(gasStationDto.getSuperPlusPrice() - d) < 0.0000001) {
+			if(gasStationDto.getSuperPlusPrice() == null) {
 				gasStationDto.setSuperPlusPrice(1.4);
 			}
 		}
 		
 		if (gasStationDto.getHasGas()) {
-			if( Math.abs(gasStationDto.getGasPrice() - d) < 0.0000001) {
+			if(gasStationDto.getGasPrice() == null) {
 				gasStationDto.setGasPrice(1.5);
 			}
 		}
 		
 		if (gasStationDto.getHasMethane()) {
-			if( Math.abs(gasStationDto.getMethanePrice() - d) < 0.0000001) {
+			if(gasStationDto.getMethanePrice() == null) {
 				gasStationDto.setMethanePrice(1.1);
+			}
+		}
+		
+		if (gasStationDto.getHasPremiumDiesel()) {
+			if(gasStationDto.getPremiumDieselPrice() == null) {
+				gasStationDto.setPremiumDieselPrice(1.1);
 			}
 		}
 		
@@ -126,6 +129,12 @@ public class GasStationServiceimpl implements GasStationService {
 			}
 		}
 		
+		if (gasStationDto.getHasPremiumDiesel()) {
+			if(gasStationDto.getPremiumDieselPrice() < 0) {
+				throw new PriceException("Error: premium diesel price negative");
+			}
+		}
+		
 		//latitude must be from 0 to 90; otherwise throw GPSDataException
 		if(gasStationDto.getLat() < 0 || gasStationDto.getLat() > 90) {
 			throw new GPSDataException("Error: impossible latitude coordinate");
@@ -152,6 +161,7 @@ public class GasStationServiceimpl implements GasStationService {
 		GasStationConverter conv = new GasStationConverter();
 		//query database for all gas stations
 		List<GasStation> gsList = repo.findAll();
+		
 		List<GasStationDto> dtoList;
 		
 		//convert from List<GasStation> to List<GasStationDto>
@@ -211,6 +221,11 @@ public class GasStationServiceimpl implements GasStationService {
 					res.add(conv.convert(gs));
 				}
 			}
+			else if (gasolinetype.equalsIgnoreCase("Premium Diesel")) { 
+				if(gs.getHasPremiumDiesel()) {
+					res.add(conv.convert(gs));
+				}
+			}
 			else { //if gasolinetype provided does not match any known gasollinetype it throws the exception 
 				throw new InvalidGasTypeException("Error: gasolinetype provided does not match any known gasollinetype");
 			}
@@ -231,6 +246,9 @@ public class GasStationServiceimpl implements GasStationService {
 		}
 		else if (gasolinetype.equalsIgnoreCase("Methane")) {
 			Collections.sort(res, Comparator.comparingDouble(GasStationDto::getMethanePrice));
+		}
+		else if (gasolinetype.equalsIgnoreCase("Premium Diesel")) {
+			Collections.sort(res, Comparator.comparingDouble(GasStationDto::getPremiumDieselPrice));
 		}
 		
 		return res;
@@ -260,6 +278,34 @@ public class GasStationServiceimpl implements GasStationService {
 		return closeGs;
 	}
 	
+	@Override
+	public List<GasStationDto> getGasStationsByProximity(double lat, double lon, int radius) throws GPSDataException {
+		//latitude must be from 0 to 90; otherwise throw GPSDataException
+		if(lat < 0 || lat > 90) {
+			throw new GPSDataException("Error: impossible latitude coordinate");
+		}
+		
+		//longitude must be from -180 to 180; otherwise throw GPSDataException
+		if(lon < -180 || lon > 180) {
+			throw new GPSDataException("Error: impossible longitude coordinate");
+		}
+		
+		if(radius <= 0) {
+			radius = 1000;
+		}
+		
+		List<GasStationDto> closeGs = new ArrayList<GasStationDto>();
+		
+		//for each gas station in the database, if its distance is less than 1km to the provided point, it adds it to closeGs
+		for (GasStationDto gs : this.getAllGasStations()) {
+			if (distance(lat, lon, gs.getLat(), gs.getLon()) <= radius) {
+				closeGs.add(gs);
+			}
+		}
+		
+		return closeGs;
+	}
+	
 	//computes the distance between two points each specified with latitude and longitude
 	private double distance(double lat1, double lon1, double lat2, double lon2) {
 		Integer r = 6371000; //radius of earth
@@ -276,7 +322,7 @@ public class GasStationServiceimpl implements GasStationService {
 	}
 
 	@Override
-	public List<GasStationDto> getGasStationsWithCoordinates(double lat, double lon, String gasolinetype,
+	public List<GasStationDto> getGasStationsWithCoordinates(double lat, double lon, int radius, String gasolinetype,
 			String carsharing) throws InvalidGasTypeException, GPSDataException {
 		if(gasolinetype != null) {
 			if (gasolinetype.equalsIgnoreCase("")) {
@@ -295,7 +341,7 @@ public class GasStationServiceimpl implements GasStationService {
 		}
 		
 		//closeGs is the list of all stations closer than 1km
-		List<GasStationDto> closeGs = this.getGasStationsByProximity(lat, lon);
+		List<GasStationDto> closeGs = this.getGasStationsByProximity(lat, lon, radius);
 		
 		//if carsharing parameter was specified, it filters closeGs to keep only the stations with that carsharing
 		if (!carsharing.equalsIgnoreCase("null")) {
@@ -376,8 +422,8 @@ public class GasStationServiceimpl implements GasStationService {
 	}
 
 	@Override
-	public void setReport(Integer gasStationId, double dieselPrice, double superPrice, double superPlusPrice,
-			double gasPrice, double methanePrice, Integer userId)
+	public void setReport(Integer gasStationId, Double dieselPrice, Double superPrice, Double superPlusPrice,
+			Double gasPrice, Double methanePrice, Double premiumDieselPrice, Integer userId)
 			throws InvalidGasStationException, PriceException, InvalidUserException {
 		if (userId < 0) {
 			throw new InvalidUserException("Error: negative value for user id");
@@ -435,6 +481,13 @@ public class GasStationServiceimpl implements GasStationService {
 			gs.setMethanePrice(methanePrice);
 		}
 		
+		if(gs.getHasPremiumDiesel()) {
+			if(premiumDieselPrice < 0) {
+				throw new PriceException("Error: price for Premium diesel is negative");
+			}
+			gs.setPremiumDieselPrice(premiumDieselPrice);
+		}
+		
 		try {
 			this.saveGasStation(gs);
 		} catch (PriceException e) {
@@ -482,5 +535,4 @@ public class GasStationServiceimpl implements GasStationService {
 			
 		return stations;
 	}
-	
 }
