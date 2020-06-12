@@ -291,14 +291,14 @@ public class GasStationServiceimpl implements GasStationService {
 		}
 		
 		if(radius <= 0) {
-			radius = 1000;
+			radius = 1;
 		}
 		
 		List<GasStationDto> closeGs = new ArrayList<GasStationDto>();
 		
 		//for each gas station in the database, if its distance is less than 1km to the provided point, it adds it to closeGs
 		for (GasStationDto gs : this.getAllGasStations()) {
-			if (distance(lat, lon, gs.getLat(), gs.getLon()) <= radius) {
+			if (distance(lat, lon, gs.getLat(), gs.getLon()) <= radius*1000) {
 				closeGs.add(gs);
 			}
 		}
