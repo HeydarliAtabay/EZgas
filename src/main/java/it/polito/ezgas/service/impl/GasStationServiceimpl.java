@@ -177,7 +177,7 @@ public class GasStationServiceimpl implements GasStationService {
 		}
 		
 		if (repo.findOne(gasStationId) == null) {
-			return null;
+			return false;
 		}
 		
 		repo.delete(gasStationId);
