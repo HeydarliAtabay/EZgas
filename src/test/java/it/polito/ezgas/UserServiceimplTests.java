@@ -18,6 +18,7 @@ import java.util.List;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import it.polito.ezgas.converter.UserConverter;
 import it.polito.ezgas.dto.IdPw;
 import it.polito.ezgas.dto.LoginDto;
 import it.polito.ezgas.dto.UserDto;
@@ -140,7 +141,7 @@ public class UserServiceimplTests {
 		uList.add(u);
 		
 		UserRepository repo = mock(UserRepository.class);
-		when(repo.findAll()).thenReturn(uList);
+		when(repo.findOne(5)).thenReturn(u);
 		UserServiceimpl s = new UserServiceimpl(repo);
 		
 		try {
@@ -253,14 +254,18 @@ public class UserServiceimplTests {
 		User u = new User();
 		u.setReputation(rep);
 		u.setUserId(userId);
+		u.setAdmin(false);
+		u.setEmail("email");
+		u.setPassword("pwd");
+		u.setUserName("un");
 		
-		UserRepository repo = mock(UserRepository.class);
-		when(repo.findOne(userId)).thenReturn(u);
-		UserServiceimpl s = new UserServiceimpl(repo);
+		UserConverter conv = new UserConverter();
+		UserDto savedU = this.userService.saveUser(conv.convert(u));
 		
 		try {
-			Integer newRep = s.increaseUserReputation(userId);
+			Integer newRep = this.userService.increaseUserReputation(savedU.getUserId());
 			assertTrue(newRep == rep + 1);
+			this.userService.deleteUser(savedU.getUserId());
 		} catch (InvalidUserException e) {
 			fail();
 		}
@@ -297,14 +302,18 @@ public class UserServiceimplTests {
 		User u = new User();
 		u.setReputation(rep);
 		u.setUserId(userId);
+		u.setAdmin(false);
+		u.setEmail("email");
+		u.setPassword("pwd");
+		u.setUserName("un");
 		
-		UserRepository repo = mock(UserRepository.class);
-		when(repo.findOne(userId)).thenReturn(u);
-		UserServiceimpl s = new UserServiceimpl(repo);
+		UserConverter conv = new UserConverter();
+		UserDto savedU = this.userService.saveUser(conv.convert(u));
 		
 		try {
-			Integer newRep = s.decreaseUserReputation(userId);
+			Integer newRep = this.userService.decreaseUserReputation(savedU.getUserId());
 			assertTrue(newRep == rep - 1);
+			this.userService.deleteUser(savedU.getUserId());
 		} catch (InvalidUserException e) {
 			fail();
 		}
