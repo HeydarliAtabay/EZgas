@@ -38,7 +38,7 @@ public class TestController {
 	@Test
 	//test /gasstation/getGasStation/{id}
 	public void getGasStationByIdApiTest() throws ClientProtocolException, IOException {
-		Integer id = 64;
+		Integer id = 1;
 		
 		HttpUriRequest req = new HttpGet("http://localhost:8080/gasstation/getGasStation/" + id);
 		HttpResponse res = HttpClientBuilder.create().build().execute(req);
@@ -61,7 +61,7 @@ public class TestController {
 		ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		GasStationDto[] gsArray = mapper.readValue(jsonFromResponse, GasStationDto[].class);
 		
-		assertTrue(gsArray.length == 8);
+		assertTrue(gsArray.length == 2);
 	}
 	
 	@Test
@@ -69,7 +69,7 @@ public class TestController {
 		CloseableHttpClient client = HttpClients.createDefault();
 		HttpPost req = new HttpPost("http://localhost:8080/gasstation" + Constants.SAVE_GASSTATION);
 		
-		String json = "{ \"gasStationId\": 150, \"gasStationName\": \"testGSname\" }";
+		String json = "{ \"gasStationId\": 150, \"gasStationName\": \"testGSname\", \"carSharing\": \"enjoy\" }";
 		StringEntity entity = new StringEntity(json);
 		req.setEntity(entity);
 		req.setHeader("Accept", "application/json");
@@ -83,7 +83,7 @@ public class TestController {
 	
 	@Test
 	public void deleteGasStationApiTest() throws ClientProtocolException, IOException {
-		HttpUriRequest req = new HttpDelete("http://localhost:8080/gasstation/deleteGasStation/35");
+		HttpUriRequest req = new HttpDelete("http://localhost:8080/gasstation/deleteGasStation/2");
 		HttpResponse res = HttpClientBuilder.create().build().execute(req);
 		
 		assertTrue(res.getStatusLine().getStatusCode() == 200);
@@ -108,8 +108,9 @@ public class TestController {
 	public void getGasStationsByProximityApiTest() throws ClientProtocolException, IOException {
 		Double lat = 43.7938506	;
 		Double lon = 7.6175733;
+		Integer radius = 1;
 		
-		HttpUriRequest req = new HttpGet("http://localhost:8080/gasstation/searchGasStationByProximity/" + lat + "/" + lon + "/");
+		HttpUriRequest req = new HttpGet("http://localhost:8080/gasstation/searchGasStationByProximity/" + lat + "/" + lon + "/" + radius + "/");
 		HttpResponse res = HttpClientBuilder.create().build().execute(req);
 		
 		String jsonFromResponse = EntityUtils.toString(res.getEntity());
@@ -126,8 +127,9 @@ public class TestController {
 		Double lon = 7.6175733;
 		String gasolineType = "Diesel";
 		String carSharing = "Enjoy";
+		Integer radius = 1;
 		
-		HttpUriRequest req = new HttpGet("http://localhost:8080/gasstation/getGasStationsWithCoordinates/" + lat + "/" + lon + "/" + gasolineType + "/" + carSharing + "/");
+		HttpUriRequest req = new HttpGet("http://localhost:8080/gasstation/getGasStationsWithCoordinates/" + lat + "/" + lon + "/" + radius + "/" + gasolineType + "/" + carSharing + "/");
 		HttpResponse res = HttpClientBuilder.create().build().execute(req);
 		
 		String jsonFromResponse = EntityUtils.toString(res.getEntity());
@@ -139,25 +141,21 @@ public class TestController {
 	}
 	
 	@Test
-	public void setGasStationReportApiTest() throws ClientProtocolException, IOException {
-		Integer id = 64;
-		Double dieselPrice = 1.2;
-		Double superPrice = 1.3;
-		Double superPlusPrice = 1.4;
-		Double gasPrice = 1.1;
-		Double methanePrice = 1.5;
-		Integer userId = 16;
-		
+	public void setGasStationReportApiTest() throws ClientProtocolException, IOException {	
 		CloseableHttpClient client = HttpClients.createDefault();
-		HttpPost req = new HttpPost("http://localhost:8080/gasstation/setGasStationReport/"
-		+ id + "/"
-		+ dieselPrice + "/"
-		+ superPrice + "/"
-		+ superPlusPrice + "/"
-		+ gasPrice + "/"
-		+ methanePrice + "/"
-		+ userId + "/"
-		);
+		HttpPost req = new HttpPost("http://localhost:8080/gasstation/setGasStationReport/");
+		
+		String json = "{ \"gasStationId\": 1, \"dieselPrice\": 1.2, \"superPrice\": 1.3,"
+				+ " \"superPlusPrice\": 1.4, "
+				+ " \"gasPrice\": 1.4, "
+				+ " \"methanePrice\": 1.5, "
+				+ " \"premiumDieselPrice\": 1.6, "
+				+ " \"userId\": 16, "
+				+ " }";
+		StringEntity entity = new StringEntity(json);
+		req.setEntity(entity);
+		req.setHeader("Accept", "application/json");
+		req.setHeader("Content-type", "application/json");
 		
 		
 		CloseableHttpResponse res = client.execute(req);
@@ -168,7 +166,7 @@ public class TestController {
 	
 	@Test
 	public void getUserByIdApiTest() throws ClientProtocolException, IOException {
-		Integer id = 25;
+		Integer id = 1;
 		
 		HttpUriRequest req = new HttpGet("http://localhost:8080/user/getUser/" + id);
 		HttpResponse res = HttpClientBuilder.create().build().execute(req);
@@ -191,7 +189,7 @@ public class TestController {
 		ObjectMapper mapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		UserDto[] uArray = mapper.readValue(jsonFromResponse, UserDto[].class);
 		
-		assertTrue(uArray.length == 3);
+		assertTrue(uArray.length == 12);
 	}
 	
 	@Test
@@ -252,7 +250,7 @@ public class TestController {
 		CloseableHttpClient client = HttpClients.createDefault();
 		HttpPost req = new HttpPost("http://localhost:8080/user" + Constants.LOGIN);
 		
-		String json = "{ \"user\": \"admin\", \"pw\": \"admin\" }";
+		String json = "{ \"user\": \"admin@ezgas.com\", \"pw\": \"admin\" }";
 		StringEntity entity = new StringEntity(json);
 		req.setEntity(entity);
 		req.setHeader("Accept", "application/json");

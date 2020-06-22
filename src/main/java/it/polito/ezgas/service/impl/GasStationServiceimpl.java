@@ -147,7 +147,7 @@ public class GasStationServiceimpl implements GasStationService {
 		
 		GasStationConverter conv = new GasStationConverter();
 		
-		if (gasStationDto.getCarSharing().equals("null")) {
+		if (gasStationDto.getCarSharing() != null && gasStationDto.getCarSharing().equals("null")) {
 			gasStationDto.setCarSharing(null);
 		}
 		
