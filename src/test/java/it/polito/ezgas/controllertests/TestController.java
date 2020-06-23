@@ -2,7 +2,6 @@ package it.polito.ezgas.controllertests;
 
 import static org.junit.Assert.assertTrue;
 
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -150,7 +149,7 @@ public class TestController {
 				+ " \"gasPrice\": 1.4, "
 				+ " \"methanePrice\": 1.5, "
 				+ " \"premiumDieselPrice\": 1.6, "
-				+ " \"userId\": 16, "
+				+ " \"userId\": 16 "
 				+ " }";
 		StringEntity entity = new StringEntity(json);
 		req.setEntity(entity);
