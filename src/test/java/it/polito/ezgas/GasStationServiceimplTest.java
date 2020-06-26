@@ -51,8 +51,8 @@ public class GasStationServiceimplTest {
 		List<User> allUsers = userRepository.findAll();
 		List<GasStation> allStations = gasStationRepository.findAll();
 
-		allUsers.forEach(user -> userRepository.delete(user.getUserId()));
 		allStations.forEach(gasStation -> gasStationRepository.delete(gasStation.getGasStationId()));
+		allUsers.forEach(user -> userRepository.delete(user.getUserId()));
 	}
 
 	
@@ -135,16 +135,16 @@ public class GasStationServiceimplTest {
 	@Test
 	public void getGasStationByProximityTest() throws GPSDataException, PriceException {//  try to get all gas stations with a "null" fuel
 		GasStationDto gasStationDto1 = new GasStationDto(null, "GasStation1", "Via Roma 1", true, true, true, false, false,false,
-				"", 10, 30, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1, null, 0);
+				"", 10, 30, null, null, null, -1.0, -1.0, -1.0, -1, null, 0);
 
 		GasStationDto gasStationDto2 = new GasStationDto(null, "GasStation2", "Via Roma 13", true, false, true, false, true,false,
-				"Car2Go", 3, 30.004, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1, null, 0);
+				"Car2Go", 3, 30.004, null, -1.0, null, -1.0, null, -1.0, -1, null, 0);
 
 		GasStationDto gasStationDto3 = new GasStationDto(null, "GasStation3", "Via Garibaldi 21", false, false, true, true, true,false,
-				"Car2Go", 67.3, 30.0,  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1, null, 0);
+				"Car2Go", 67.3, 30.0,  -1.0, -1.0, null, null, null, -1.0, -1, null, 0);
 
 		GasStationDto gasStationDto4 = new GasStationDto(null, "GasStation4", "Corso Vittorio Emanuele 1", false, false, false, false, true,false,
-				"Enjoy", 10, 55,  -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1, null, 0);
+				"Enjoy", 10, 55,  -1.0, -1.0, -1.0, -1.0, null, -1.0, -1, null, 0);
 
 		GasStationDto gasStationDtoReceived1 = gasStationService.saveGasStation(gasStationDto1);
 		GasStationDto gasStationDtoReceived2 = gasStationService.saveGasStation(gasStationDto2);
@@ -175,16 +175,16 @@ public class GasStationServiceimplTest {
 	public void getGasStationsWithCoordinatesTest1() throws PriceException, GPSDataException, InvalidGasTypeException, InvalidCarSharingException {
 		//  try to get some station parameters by WithCoordinates with some parameters which should return nothing
 		GasStationDto gasStationDto1 = new GasStationDto(null, "GasStation1", "Via Roma 1", true, true, true, false, false,false,
-				"", 10, 30, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1, null, 0);
+				"", 10, 30, null, null, null, -1.0, -1.0, -1.0, -1, null, 0);
 
 		GasStationDto gasStationDto2 = new GasStationDto(null, "GasStation2", "Via Roma 13", true, false, true, false, true,false,
-				"Car2Go", 3, 30.004, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1, null, 0);
+				"Car2Go", 3, 30.004, null, -1.0, null, -1.0, null, -1.0, -1, null, 0);
 
 		GasStationDto gasStationDto3 = new GasStationDto(null, "GasStation3", "Via Garibaldi 21", false, false, true, true, true,false,
-				"Car2Go", 67.3, 30.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1, null, 0);
+				"Car2Go", 67.3, 30.0, -1.0, -1.0, null, null, null, -1.0, -1, null, 0);
 
 		GasStationDto gasStationDto4 = new GasStationDto(null, "GasStation4", "Corso Vittorio Emanuele 1", false, false, false, false, true,false,
-				"Enjoy", 10, 55, -1.0, -1.0, -1.0, -1.0, -1.0, -1.0, -1, null, 0);
+				"Enjoy", 10, 55, -1.0, -1.0, -1.0, -1.0, null, -1.0, -1, null, 0);
 
 
 		GasStationDto gasStationDtoReceived1 = gasStationService.saveGasStation(gasStationDto1);
