@@ -6,17 +6,17 @@ We consider two phases: <br>
 -New development: From project start (april 13) to delivery of version 1 fixed (june 9)  <br>
 -Maintenance: implementation of CR4 and CR7 (june 9 to end)   <br>
 Report effort figures from the timesheet or timesheetCR document, compute size from the source code.
-
+ 
 ## New development 
 | Measure| Value |
 |---|---|
-|effort E (report here effort in person hours, for New development, from timesheet)  ||
-|size S (report here size in LOC of all code written, excluding test cases)  ||
-|productivity = S/E ||
+|effort E (report here effort in person hours, for New development, from timesheet)  |117|
+|size S (report here size in LOC of all code written, excluding test cases)  |1800|
+|productivity = S/E |15|
 |defects after release D (number of defects found running official acceptance tests and fixed in CR0) ||
-|defect density = D/S||
-| effort for non-quality ENQ (effort for CR0, or effort to fix defects found running official acceptance tests, from timesheetCR) ||
-| effort for non quality, relative = ENQ / E ||
+|defect density = D/S|0.01|
+| effort for non-quality ENQ (effort for CR0, or effort to fix defects found running official acceptance tests, from timesheetCR) |4|
+| effort for non quality, relative = ENQ / E |0.03|
 
 ## Maintenance
 
