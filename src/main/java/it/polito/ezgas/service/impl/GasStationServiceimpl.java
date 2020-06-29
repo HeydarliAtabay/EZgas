@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -437,12 +438,29 @@ public class GasStationServiceimpl implements GasStationService {
 			return;
 		}
 		
-		gs.setReportUser(userId);
 		
-		Integer userRep = 0;
-		if (this.userService.getUserById(userId) != null) {
+		Integer userRep;
+		
+		if(gs.getReportUser() != null && gs.getReportUser() >= 0) { //if there is already a price report
+			Integer oldUserRep = this.userService.getUserById(gs.getReportUser()).getReputation();
+			Integer newUserRep = this.userService.getUserById(userId).getReputation();
+			if(newUserRep >= oldUserRep) {  //if the new user has acceptable reputation
+				gs.setReportUser(userId);    //set new report user
+				gs.setUserDto(this.userService.getUserById(userId));    //set new userDto
+				userRep = newUserRep;
+			}
+			else if (this.isReportRecent(gs.getReportTimestamp())){  //if (today - p.time_tag) <= 4 days  and the new reputation is bad don't set the new report
+				return;
+			}
+			else { //if the new user has a worse reputation but the setreport is old, change it anyway
+				userRep = oldUserRep;
+			}
+		}
+		else {  //if there was no price report in the gas station
+			
 			userRep = this.userService.getUserById(userId).getReputation();
-			gs.setUserDto(this.userService.getUserById(userId));
+			gs.setReportUser(userId);    //set new report user
+			gs.setUserDto(this.userService.getUserById(userId));    //set new userDto
 		}
 		
 		String timestamp = new SimpleDateFormat("MM-dd-YYYY").format(new Date());
@@ -497,6 +515,27 @@ public class GasStationServiceimpl implements GasStationService {
 			e.printStackTrace();
 		} catch (GPSDataException e) {
 			e.printStackTrace();
+		}
+	}
+	
+	//return true if (today - p.time_tag) <= 4 days 
+	private boolean isReportRecent(String reportTimeStamp) {
+		SimpleDateFormat dateF = new SimpleDateFormat("MM-dd-YYYY");
+		Date today = new Date();
+		try {
+			Date ts = dateF.parse(reportTimeStamp);
+			
+			long diff = today.getTime() - ts.getTime();
+			long diffDays = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+			
+			if(diffDays <= 4) {
+				return true;
+			}
+			return false;
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return false;
 		}
 	}
 	
