@@ -16,4 +16,4 @@ These figures will not be used to evaluate neither the project nor the team
 | jun 1 -  7 |4 hours | | | | 
 | jun 8 - 14 | |1 hour |1 hour | |
 | jun 15 -21 | |1 hour|1 hour | |
-| jun 22 -28 | | | | |
+| jun 22 -28 | |1 hour | | |
