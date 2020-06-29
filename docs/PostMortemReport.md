@@ -22,3 +22,4 @@ Also this document will not be used for evaluations, but for improving the proje
 
 # Suggestions 
 
+- A brief introduction to the Spring Boot framework before the start of the project; we felt a bit lost at the beginning
