@@ -2,9 +2,9 @@
 
 Authors: Atabay Heydarli, Davide Lo Bianco, Gianluca Canitano, Nadir Casciola
 
-Date: 27/04/2020
+Date: 30/06/2020
 
-Version: 1.0
+Version: 2.0
 
 # Contents
 
@@ -28,11 +28,11 @@ First we consider an estimate by product decomposition, then an estimate by acti
 |             | Estimate                        |             
 | ----------- | ------------------------------- |  
 | NC =  Estimated number of classes to be developed   |              10                 |             
-|  A = Estimated average size per class, in LOC       |                150            | 
-| S = Estimated size of project, in LOC (= NC * A) | 1500|
-| E = Estimated effort, in person hours (here use productivity 10 LOC per person hour)  |                              150        |   
-| C = Estimated cost, in euro (here use 1 person hour cost = 30 euro) |4500 | 
-| Estimated calendar time, in calendar weeks (Assume team of 4 people, 8 hours per day, 5 days per week ) |    Approx. 1 week                |               
+|  A = Estimated average size per class, in LOC       |                180            | 
+| S = Estimated size of project, in LOC (= NC * A) | 1800|
+| E = Estimated effort, in person hours (here use productivity 10 LOC per person hour)  |                              180        |   
+| C = Estimated cost, in euro (here use 1 person hour cost = 30 euro) |5400 | 
+| Estimated calendar time, in calendar weeks (Assume team of 4 people, 8 hours per day, 5 days per week ) |    Slightly more than 1 week                |               
 
 
 # Estimate by activity decomposition
@@ -49,13 +49,13 @@ First we consider an estimate by product decomposition, then an estimate by acti
 | **2. Design** | **30** | 
 | 2.1 High level design | 15 |
 | 2.2 Low level design | 15 |
-| **3. Implementation** | **60** |
-| 3.1 Front end| 25|
-| 3.2 Back end| 25|
+| **3. Implementation** | **50** |
+| 3.1 Front end| 20|
+| 3.2 Back end| 20|
 | 3.3 Interfaces| 10|
-| **4. Testing** |  **15**|
+| **4. Testing** |  **45**|
 | **5. Review** |  **15**|
 
 ### Gantt chart:
 
-![](docs/Graphic_files/Others/gantt.jpg)
+![](docs/Graphic_files/Others/gantt.png)
