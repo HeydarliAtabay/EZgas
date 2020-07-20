@@ -20,6 +20,7 @@ public class GasStationConverter implements Converter<GasStation, GasStationDto>
 				source.getHasSuperPlus(),
 				source.getHasGas(),
 				source.getHasMethane(),
+				source.getHasPremiumDiesel(),
 				source.getCarSharing(),
 				source.getLat(),
 				source.getLon(),
@@ -28,6 +29,7 @@ public class GasStationConverter implements Converter<GasStation, GasStationDto>
 				source.getSuperPlusPrice(),
 				source.getGasPrice(),
 				source.getMethanePrice(),
+				source.getPremiumDieselPrice(),
 				source.getReportUser(),
 				source.getReportTimestamp(),
 				source.getReportDependability());
@@ -49,6 +51,7 @@ public class GasStationConverter implements Converter<GasStation, GasStationDto>
 				source.getHasSuperPlus(),
 				source.getHasGas(),
 				source.getHasMethane(),
+				source.getHasPremiumDiesel(),
 				source.getCarSharing(),
 				source.getLat(),
 				source.getLon(),
@@ -57,6 +60,7 @@ public class GasStationConverter implements Converter<GasStation, GasStationDto>
 				source.getSuperPlusPrice(),
 				source.getGasPrice(),
 				source.getMethanePrice(),
+				source.getPremiumDieselPrice(),
 				source.getReportUser(),
 				source.getReportTimestamp(),
 				source.getReportDependability());

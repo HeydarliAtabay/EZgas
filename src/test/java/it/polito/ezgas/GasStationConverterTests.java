@@ -28,14 +28,16 @@ public class GasStationConverterTests {
 				true,
 				true,
 				false,
+				true,
 				"car2go",
 				47.568,
 				7.568,
-				2,
-				2,
-				2,
-				2,
-				-1,
+				2.0,
+				2.0,
+				2.0,
+				2.0,
+				-1.0,
+				2.0,
 				15,
 				"timestamp",
 				1.6);
@@ -54,12 +56,14 @@ public class GasStationConverterTests {
 		assertTrue(gsDto.getHasSuperPlus());
 		assertTrue(gsDto.getHasGas());
 		assertTrue(!gsDto.getHasMethane());
+		assertTrue(gsDto.getHasPremiumDiesel());
 		assertTrue(gsDto.getCarSharing().equals("car2go"));
 		assertTrue(gsDto.getLat() == 47.568);
 		assertTrue(gsDto.getLon() == 7.568);
 		assertTrue(gsDto.getDieselPrice() == 2);
 		assertTrue(gsDto.getSuperPrice() == 2);
 		assertTrue(gsDto.getGasPrice() == 2);
+		assertTrue(gsDto.getPremiumDieselPrice() == 2);
 		assertTrue(gsDto.getReportUser() == 15);
 		assertTrue(gsDto.getReportTimestamp().equals("timestamp"));
 		assertTrue(gsDto.getReportDependability() == 1.6);
@@ -77,14 +81,16 @@ public class GasStationConverterTests {
 				true,
 				true,
 				false, //methane
+				true,
 				"enjoy",
 				45.89,
 				8.89,
-				2,
-				2,
-				2,
-				2,
-				-1,
+				2.0,
+				2.0,
+				2.0,
+				2.0,
+				-1.0,
+				2.0,
 				15,
 				"timestamp",
 				1.5);
@@ -102,6 +108,7 @@ public class GasStationConverterTests {
 		assertTrue(gs.getHasSuper());
 		assertTrue(gs.getHasSuperPlus());
 		assertTrue(gs.getHasGas());
+		assertTrue(gs.getHasPremiumDiesel());
 		assertTrue(!gs.getHasMethane());
 		assertTrue(gs.getCarSharing().equals("enjoy"));
 		assertTrue(gs.getLat() == 45.89);
@@ -110,6 +117,7 @@ public class GasStationConverterTests {
 		assertTrue(gs.getSuperPrice() == 2);
 		assertTrue(gs.getSuperPlusPrice() == 2);
 		assertTrue(gs.getGasPrice() == 2);
+		assertTrue(gs.getPremiumDieselPrice() == 2);
 		assertTrue(gs.getReportUser() == 15);
 		assertTrue(gs.getReportTimestamp().equals("timestamp"));
 		assertTrue(gs.getReportDependability() == 1.5);
@@ -127,14 +135,16 @@ public class GasStationConverterTests {
 					true,
 					true,
 					false,
+					true,
 					"car2go",
 					47.568,
 					7.568,
-					2,
-					2,
-					2,
-					2,
-					-1,
+					2.0,
+					2.0,
+					2.0,
+					2.0,
+					-1.0,
+					2.0,
 					15,
 					"timestamp",
 					1.6);
@@ -162,14 +172,16 @@ public class GasStationConverterTests {
 					true,
 					true,
 					false, //methane
+					true,
 					"enjoy",
 					45.89,
 					8.89,
-					2,
-					2,
-					2,
-					2,
-					-1,
+					2.0,
+					2.0,
+					2.0,
+					2.0,
+					-1.0,
+					2.0,
 					15,
 					"timestamp",
 					1.5);

@@ -40,7 +40,7 @@ public class EZGasApplicationTests {
 	@Test
 	public void TestgetDieselPrice1() {
 		GasStation gasStation=new GasStation();
-		int price=5;
+		double price=5.0;
 		gasStation.setDieselPrice(price);
 		assert(gasStation.getDieselPrice()==price);
 		
@@ -49,7 +49,7 @@ public class EZGasApplicationTests {
 	@Test
 	public void TestgetDieselPrice2() {
 		GasStation gasStation=new GasStation();
-		int price=-5;
+		double price=-5.0;
 		gasStation.setDieselPrice(price);
 		assertTrue(gasStation.getDieselPrice()==price);
 	}
@@ -73,7 +73,7 @@ public class EZGasApplicationTests {
 	@Test 
 	public void TestsetGasPrice1() {
 		GasStation gasStation=new GasStation();
-		gasStation.setGasPrice(3);
+		gasStation.setGasPrice(3.0);
 		double price = gasStation.getGasPrice();
 		assertTrue(price==3);		
 	}
@@ -87,7 +87,7 @@ public class EZGasApplicationTests {
 	@Test 
 	public void TestsetGasPrice3() {
 		GasStation gasStation=new GasStation();
-		gasStation.setGasPrice(-3);
+		gasStation.setGasPrice(-3.0);
 		double price = gasStation.getGasPrice();
 		assertTrue(price==-3);		
 	}
@@ -101,7 +101,7 @@ public class EZGasApplicationTests {
 	@Test 
 	public void TestsetGasPrice5() {
 		GasStation gasStation=new GasStation();
-		gasStation.setGasPrice(0);
+		gasStation.setGasPrice(0.0);
 		double price = gasStation.getGasPrice();
 		assertTrue(price==0);		
 	}
