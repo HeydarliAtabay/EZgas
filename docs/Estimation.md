@@ -36,7 +36,7 @@ First we consider an estimate by product decomposition, then an estimate by acti
 
 
 # Estimate by activity decomposition
-
+sadasdsadsadasdsd
 
 
 ### 
